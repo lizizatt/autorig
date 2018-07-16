@@ -25,6 +25,7 @@ namespace _RectPrivate {
 template <int Dim> class RectOp;
 }
 
+namespace PinRect {
 template<class Real, int Dim>
 class Rect {
 public:
@@ -134,7 +135,9 @@ template <class charT, class traits, class Real, int Dim>
         os << "Rect(" << r.getLo() << ", " << r.getHi() << ")";
     return os;
 }
+}
 
+using namespace PinRect;
 namespace _RectPrivate {
 #define VRD Vector<R, D>
 #define RRD Rect<R, D>

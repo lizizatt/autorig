@@ -22,6 +22,7 @@
 #include "rect.h"
 #include "indexer.h"
 
+using namespace PinRect;
 template<class Data, int Dim>
 class DNode : public Data
 {

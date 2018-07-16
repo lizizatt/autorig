@@ -25,6 +25,7 @@
 #include <set>
 #include <algorithm>
 
+using namespace PinRect;
 Mesh::Mesh(const string &file)
     : scale(1.)
 {

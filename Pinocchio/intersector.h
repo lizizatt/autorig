@@ -22,6 +22,8 @@
 #include "mesh.h"
 #include "vecutils.h"
 
+using namespace PinRect;
+
 class Intersector {
 public:
     Intersector() : mesh(NULL) {}
