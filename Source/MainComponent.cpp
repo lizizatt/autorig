@@ -32,7 +32,7 @@ public:
     {
         addAndMakeVisible(graphicsComponent = new GraphicsComponent());
         addAndMakeVisible(uiComponent = new UIComponent());
-        setSize (800, 600);
+        setSize (1200, 800);
     }
 
     void paint (Graphics& g) override

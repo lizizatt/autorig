@@ -4,7 +4,52 @@
               bundleIdentifier="com.yourcompany.NewProject" includeBinaryInAppConfig="1"
               jucerVersion="3.1.1">
   <MAINGROUP id="oOJRTR" name="AutoRig">
+    <GROUP id="{A7BF955B-4863-9FF7-C55A-0DC7A2B9B960}" name="Pinocchio">
+      <FILE id="HVNwot" name="attachment.cpp" compile="1" resource="0" file="Pinocchio/attachment.cpp"/>
+      <FILE id="tRHS4P" name="attachment.h" compile="0" resource="0" file="Pinocchio/attachment.h"/>
+      <FILE id="bWLTnM" name="deriv.h" compile="0" resource="0" file="Pinocchio/deriv.h"/>
+      <FILE id="SYcmHA" name="discretization.cpp" compile="1" resource="0"
+            file="Pinocchio/discretization.cpp"/>
+      <FILE id="g3GhSc" name="dtree.h" compile="0" resource="0" file="Pinocchio/dtree.h"/>
+      <FILE id="IQ9kVK" name="embedding.cpp" compile="1" resource="0" file="Pinocchio/embedding.cpp"/>
+      <FILE id="Pg8g17" name="graphutils.cpp" compile="1" resource="0" file="Pinocchio/graphutils.cpp"/>
+      <FILE id="qWGG7i" name="graphutils.h" compile="0" resource="0" file="Pinocchio/graphutils.h"/>
+      <FILE id="X3vczS" name="hashutils.h" compile="0" resource="0" file="Pinocchio/hashutils.h"/>
+      <FILE id="KLZOPZ" name="indexer.cpp" compile="1" resource="0" file="Pinocchio/indexer.cpp"/>
+      <FILE id="FAF1KY" name="indexer.h" compile="0" resource="0" file="Pinocchio/indexer.h"/>
+      <FILE id="O9P1Fm" name="intersector.cpp" compile="1" resource="0" file="Pinocchio/intersector.cpp"/>
+      <FILE id="TTlceN" name="intersector.h" compile="0" resource="0" file="Pinocchio/intersector.h"/>
+      <FILE id="bbbeyf" name="lsqSolver.cpp" compile="1" resource="0" file="Pinocchio/lsqSolver.cpp"/>
+      <FILE id="icgCsd" name="lsqSolver.h" compile="0" resource="0" file="Pinocchio/lsqSolver.h"/>
+      <FILE id="wvTODi" name="Makefile" compile="0" resource="1" file="Pinocchio/Makefile"/>
+      <FILE id="iDR2NR" name="mathutils.h" compile="0" resource="0" file="Pinocchio/mathutils.h"/>
+      <FILE id="Sq1x5v" name="matrix.cpp" compile="1" resource="0" file="Pinocchio/matrix.cpp"/>
+      <FILE id="RyFBys" name="matrix.h" compile="0" resource="0" file="Pinocchio/matrix.h"/>
+      <FILE id="Gg5JxP" name="mesh.cpp" compile="1" resource="0" file="Pinocchio/mesh.cpp"/>
+      <FILE id="v0pn7X" name="mesh.h" compile="0" resource="0" file="Pinocchio/mesh.h"/>
+      <FILE id="ymBjJw" name="multilinear.h" compile="0" resource="0" file="Pinocchio/multilinear.h"/>
+      <FILE id="ES1ukh" name="pinocchioApi.cpp" compile="1" resource="0"
+            file="Pinocchio/pinocchioApi.cpp"/>
+      <FILE id="BuQ1Xh" name="pinocchioApi.h" compile="0" resource="0" file="Pinocchio/pinocchioApi.h"/>
+      <FILE id="WYc7Qz" name="pointprojector.h" compile="0" resource="0"
+            file="Pinocchio/pointprojector.h"/>
+      <FILE id="AerLpN" name="quaddisttree.h" compile="0" resource="0" file="Pinocchio/quaddisttree.h"/>
+      <FILE id="eA1NZa" name="rect.h" compile="0" resource="0" file="Pinocchio/rect.h"/>
+      <FILE id="jEAbwq" name="refinement.cpp" compile="1" resource="0" file="Pinocchio/refinement.cpp"/>
+      <FILE id="P2GT1d" name="skeleton.cpp" compile="1" resource="0" file="Pinocchio/skeleton.cpp"/>
+      <FILE id="NvGDj3" name="skeleton.h" compile="0" resource="0" file="Pinocchio/skeleton.h"/>
+      <FILE id="klYq4d" name="transform.h" compile="0" resource="0" file="Pinocchio/transform.h"/>
+      <FILE id="M2bL1A" name="utils.h" compile="0" resource="0" file="Pinocchio/utils.h"/>
+      <FILE id="QtAyHz" name="vector.h" compile="0" resource="0" file="Pinocchio/vector.h"/>
+      <FILE id="Gk8oSV" name="vecutils.h" compile="0" resource="0" file="Pinocchio/vecutils.h"/>
+    </GROUP>
     <GROUP id="{D4292D6E-AD46-1A18-0CC2-B291C4FAB6E1}" name="Source">
+      <GROUP id="{5072DCAC-66F6-9DAC-0E4A-387A7CFA72AA}" name="Autorig">
+        <FILE id="jrvYu2" name="Model.cpp" compile="1" resource="0" file="Source/Model.cpp"/>
+        <FILE id="goxdfd" name="Model.h" compile="0" resource="0" file="Source/Model.h"/>
+        <FILE id="hqq0cb" name="AutoRig.cpp" compile="1" resource="0" file="Source/AutoRig.cpp"/>
+        <FILE id="cI44kS" name="AutoRig.h" compile="0" resource="0" file="Source/AutoRig.h"/>
+      </GROUP>
       <FILE id="rkwH1M" name="GraphicsComponent.cpp" compile="1" resource="0"
             file="Source/GraphicsComponent.cpp"/>
       <FILE id="WEQZwp" name="GraphicsComponent.h" compile="0" resource="0"
@@ -14,6 +59,7 @@
       <FILE id="AjsqsF" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
       <FILE id="frgS16" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
+      <FILE id="w2GA07" name="Main.h" compile="0" resource="0" file="Source/Main.h"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

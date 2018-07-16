@@ -18,7 +18,7 @@ GraphicsComponent::GraphicsComponent()
     setOpaque (true);
     context.setRenderer (this);
     context.attachTo (*this);
-    context.setContinuousRepainting (true);
+    context.setContinuousRepainting (false);
 }
 
 GraphicsComponent::~GraphicsComponent()
