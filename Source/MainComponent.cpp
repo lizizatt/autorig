@@ -10,51 +10,40 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
+#include "GraphicsComponent.h"
+#include "UIComponent.h"
 
 //==============================================================================
 /*
     This component lives inside our window, and this is where you should put all
     your controls and content.
 */
-class MainContentComponent   : public OpenGLAppComponent
+class MainContentComponent   : public Component
 {
+public:
+    ScopedPointer<GraphicsComponent> graphicsComponent;
+    ScopedPointer<UIComponent> uiComponent;
+    
+    OpenGLContext context;
+    
 public:
     //==============================================================================
     MainContentComponent()
     {
+        addAndMakeVisible(graphicsComponent = new GraphicsComponent());
+        addAndMakeVisible(uiComponent = new UIComponent());
         setSize (800, 600);
-    }
-
-    ~MainContentComponent()
-    {
-        shutdownOpenGL();
-    }
-
-    void initialise() override
-    {
-    }
-
-    void shutdown() override
-    {
-    }
-
-    void render() override
-    {
-        OpenGLHelpers::clear (Colours::black);
-
     }
 
     void paint (Graphics& g) override
     {
-        // You can add your component specific drawing code here!
-        // This will draw over the top of the openGL background.
     }
 
     void resized() override
     {
-        // This is called when the MainContentComponent is resized.
-        // If you add any child components, this is where you should
-        // update their positions.
+        float uiWidth = .2;
+        uiComponent->setBounds(0, 0, getWidth() * uiWidth, getHeight());
+        graphicsComponent->setBounds(uiComponent->getRight(), 0, getWidth() - uiComponent->getRight(), getHeight());
     }
 
 

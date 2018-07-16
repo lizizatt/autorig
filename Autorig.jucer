@@ -5,6 +5,12 @@
               jucerVersion="3.1.1">
   <MAINGROUP id="oOJRTR" name="AutoRig">
     <GROUP id="{D4292D6E-AD46-1A18-0CC2-B291C4FAB6E1}" name="Source">
+      <FILE id="rkwH1M" name="GraphicsComponent.cpp" compile="1" resource="0"
+            file="Source/GraphicsComponent.cpp"/>
+      <FILE id="WEQZwp" name="GraphicsComponent.h" compile="0" resource="0"
+            file="Source/GraphicsComponent.h"/>
+      <FILE id="KQQAZJ" name="UIComponent.cpp" compile="1" resource="0" file="Source/UIComponent.cpp"/>
+      <FILE id="NLPZkM" name="UIComponent.h" compile="0" resource="0" file="Source/UIComponent.h"/>
       <FILE id="AjsqsF" name="MainComponent.cpp" compile="1" resource="0"
             file="Source/MainComponent.cpp"/>
       <FILE id="frgS16" name="Main.cpp" compile="1" resource="0" file="Source/Main.cpp"/>
@@ -14,7 +20,7 @@
     <XCODE_MAC targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       isDebug="1" optimisation="1" targetName="NewProject"/>
+                       isDebug="1" optimisation="1" targetName="AutoRig"/>
         <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
                        isDebug="0" optimisation="2" targetName="NewProject"/>
       </CONFIGURATIONS>
