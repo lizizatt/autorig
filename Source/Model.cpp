@@ -34,9 +34,20 @@ Model::Model(File m)
         mtlOrig.copyFileTo(mtl);
         File jpgOrig = m.getSiblingFile(jpg.getFileName());
         mtlOrig.copyFileTo(jpg);
-        cout << "Loaded new model " << name << "\n";
     }
     else {
-        cout << "Loaded existing model " << name << "\n";
     }
+    
+    bool res = load();
+    if (res) {
+        cout << "Loaded model " << name << "\n";
+    }
+    else {
+        cout << "Failed to load model " << name << "\n";
+    }
+}
+
+bool Model::load()
+{
+    m.
 }

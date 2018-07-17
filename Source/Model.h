@@ -29,6 +29,7 @@ public:
     String name;
     
     Model (File m);
+    bool load();
 };
 
 

@@ -54,7 +54,7 @@ public:
     void computeTopology();
     void writeObj(const string &filename) const;
     
-private:
+public:
     void readObj(istream &strm);
     void readOff(istream &strm);
     void readPly(istream &strm);
