@@ -17,6 +17,7 @@
 		154A3FB94C1875BC2AFCCBF2 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00A9C0791F959BE202384F77 /* Main.cpp */; };
 		15FCB6D368C50D2DB0AE8A0B /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 925D0E299FBC56BDB39B2A9F /* Carbon.framework */; };
 		1DF5ACF056585352DD14147B /* QuickTime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EDB110BC136F163C4A390AF4 /* QuickTime.framework */; };
+		20544E866C1C5B039E1C0E50 /* trymakemanifold.mlx in Resources */ = {isa = PBXBuildFile; fileRef = D0754053523D39164FF2E739 /* trymakemanifold.mlx */; };
 		20C82A41EC6BA07A7C011EB7 /* lsqSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F8C2F5A5B2C34913AB2AAB4C /* lsqSolver.cpp */; };
 		28A5A33D7418F9F2D7662992 /* attachment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EE98FFDEF46804D82C595D1 /* attachment.cpp */; };
 		28B7CD5B71DAC2C3F9E5BE57 /* juce_events.mm in Sources */ = {isa = PBXBuildFile; fileRef = EEA56373901CF9F5EBB567D2 /* juce_events.mm */; };
@@ -813,6 +814,7 @@
 		CCEF095C08CBC789DBAE1229 /* juce_gui_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_gui_basics.mm; path = ../../../trinity_dev/external/JUCE/modules/juce_gui_basics/juce_gui_basics.mm; sourceTree = SOURCE_ROOT; };
 		CD76E572AB4278CED3AFB0EE /* juce_DynamicObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_DynamicObject.h; path = ../../../trinity_dev/external/JUCE/modules/juce_core/containers/juce_DynamicObject.h; sourceTree = SOURCE_ROOT; };
 		D028281EDF42A7F5B0DDB1D3 /* juce_FlacAudioFormat.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_FlacAudioFormat.cpp; path = ../../../trinity_dev/external/JUCE/modules/juce_audio_formats/codecs/juce_FlacAudioFormat.cpp; sourceTree = SOURCE_ROOT; };
+		D0754053523D39164FF2E739 /* trymakemanifold.mlx */ = {isa = PBXFileReference; lastKnownFileType = file.mlx; name = trymakemanifold.mlx; path = ../../Resources/trymakemanifold.mlx; sourceTree = SOURCE_ROOT; };
 		D0A6C93C438EA9D620469A74 /* juce_OpenGLImage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_OpenGLImage.cpp; path = ../../../trinity_dev/external/JUCE/modules/juce_opengl/opengl/juce_OpenGLImage.cpp; sourceTree = SOURCE_ROOT; };
 		D0DE4B3568A9EA5453358A68 /* juce_CharacterFunctions.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_CharacterFunctions.cpp; path = ../../../trinity_dev/external/JUCE/modules/juce_core/text/juce_CharacterFunctions.cpp; sourceTree = SOURCE_ROOT; };
 		D0E6FE7F03C1343BC29BBA36 /* juce_OpenGLHelpers.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_OpenGLHelpers.h; path = ../../../trinity_dev/external/JUCE/modules/juce_opengl/opengl/juce_OpenGLHelpers.h; sourceTree = SOURCE_ROOT; };
@@ -1168,6 +1170,7 @@
 			children = (
 				1D4F875B6A97284EFE157B80 /* Info.plist */,
 				EE5FD4D2CAB4128E9169482B /* RecentFilesMenuTemplate.nib */,
+				D0754053523D39164FF2E739 /* trymakemanifold.mlx */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1577,6 +1580,13 @@
 			name = fonts;
 			sourceTree = "<group>";
 		};
+		56446A5E8DD2D881AD28931B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		57376AD416E92423797C0041 /* native */ = {
 			isa = PBXGroup;
 			children = (
@@ -1783,6 +1793,7 @@
 		77720798F1A9C7AB829FF337 /* AutoRig */ = {
 			isa = PBXGroup;
 			children = (
+				56446A5E8DD2D881AD28931B /* Resources */,
 				46BE8F4B8132FB743BC04E5B /* Pinocchio */,
 				E438346E29881F2FFF110ADA /* Source */,
 			);
@@ -2836,6 +2847,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				029EE34A4569080AC3635E40 /* RecentFilesMenuTemplate.nib in Resources */,
+				20544E866C1C5B039E1C0E50 /* trymakemanifold.mlx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2893,13 +2905,11 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
-				GCC_WARN_CHECK_SWITCH_STATEMENTS = NO;
-				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
 				GCC_WARN_MISSING_PARENTHESES = YES;
-				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = NO;
-				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = NO;
-				GCC_WARN_UNUSED_VARIABLE = NO;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = AutoRig;
@@ -2933,6 +2943,7 @@
 				);
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
+				MACOSX_DEPLAYMENT_TARGET_i386 = 11;
 				MACOSX_DEPLOYMENT_TARGET_ppc = 10.4;
 				SDKROOT_ppc = macosx10.5;
 			};
@@ -2947,13 +2958,11 @@
 				GCC_INLINES_ARE_PRIVATE_EXTERN = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_ALLOW_INCOMPLETE_PROTOCOL = NO;
-				GCC_WARN_CHECK_SWITCH_STATEMENTS = NO;
-				GCC_WARN_INHIBIT_ALL_WARNINGS = YES;
+				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
 				GCC_WARN_MISSING_PARENTHESES = YES;
-				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = NO;
-				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = NO;
-				GCC_WARN_UNUSED_VARIABLE = NO;
+				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = NewProject;
 				WARNING_CFLAGS = "-Wreorder";

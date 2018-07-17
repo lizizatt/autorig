@@ -4,6 +4,10 @@
               bundleIdentifier="com.yourcompany.NewProject" includeBinaryInAppConfig="1"
               jucerVersion="3.1.1">
   <MAINGROUP id="oOJRTR" name="AutoRig">
+    <GROUP id="{A033381A-9864-7A2A-0B20-AA5FD37A673A}" name="Resources">
+      <FILE id="DVeToL" name="trymakemanifold.mlx" compile="0" resource="0"
+            file="Resources/trymakemanifold.mlx"/>
+    </GROUP>
     <GROUP id="{A7BF955B-4863-9FF7-C55A-0DC7A2B9B960}" name="Pinocchio">
       <FILE id="HVNwot" name="attachment.cpp" compile="1" resource="0" file="Pinocchio/attachment.cpp"/>
       <FILE id="tRHS4P" name="attachment.h" compile="0" resource="0" file="Pinocchio/attachment.h"/>
@@ -66,7 +70,7 @@
     <XCODE_MAC targetFolder="Builds/MacOSX">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
-                       isDebug="1" optimisation="1" targetName="AutoRig"/>
+                       isDebug="1" optimisation="1" targetName="AutoRig" customXcodeFlags="MACOSX_DEPLAYMENT_TARGET_i386=11"/>
         <CONFIGURATION name="Release" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
                        isDebug="0" optimisation="2" targetName="NewProject"/>
       </CONFIGURATIONS>

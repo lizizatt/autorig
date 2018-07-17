@@ -17,8 +17,18 @@
 class Model
 {
 public:
-    String path;
+    const static String modelDirectory;
+    
+public:
+    File directory;
+    File obj;
+    File mtl;
+    File jpg;
     Mesh m;
+    int meshLabCleanTally = 0;
+    String name;
+    
+    Model (File m);
 };
 
 
