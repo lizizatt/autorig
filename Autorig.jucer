@@ -459,7 +459,7 @@
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX" externalLibraries="fbxsdk" extraLinkerFlags="../../FBXSDK/clang/release/"
+    <XCODE_MAC targetFolder="Builds/MacOSX" externalLibraries="fbxsdk" extraLinkerFlags="-L../../FBXSDK/clang/release/"
                extraCompilerFlags="&#10;-Wno-inconsistent-missing-override&#10;-Wno-non-virtual-dtor&#10;-Wno-unused-const-variable&#10;-Wno-switch&#10;-Wno-unused-variable&#10;-Wno-unused-const-variable">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
