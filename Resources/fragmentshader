@@ -1,0 +1,10 @@
+varying vec3 f_viewDir;
+varying vec3 f_color;
+varying vec3 f_norm;
+
+void main(void) 
+{
+   //basic diffuse
+  float diff = max(dot(f_viewDir, f_norm * 1.5), 0.0);
+  gl_FragColor = vec4(f_color * diff, 1.0) ;
+}

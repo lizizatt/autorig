@@ -29,7 +29,7 @@ void AutoRig::Clear()
 bool AutoRig::LoadOBJ(File file)
 {
     Model *m = new Model(file);
-    if (m->obj.existsAsFile() && m->mtl.existsAsFile() && m->jpg.existsAsFile()) {
+    if (m->obj.existsAsFile()) {
         models.add(m);
         activeModel = m;
         return true;
@@ -41,25 +41,17 @@ bool AutoRig::LoadOBJ(File file)
 void AutoRig::SetActive(int index)
 {
     activeModel = models[index];
-}
-
-bool AutoRig::RunMeshlabCleanup()
-{
-    runMeshlabCleanup = true;
-    return true;
-}
-
-void AutoRig::meshlabCleanup()
-{
-    if (activeModel == nullptr) {
-        return;
+    activeModel->load();
+    for (int i = 0; i < listeners.size(); i++) {
+        listeners[i]->NewActiveModel();
     }
-    
-    File filterScript = File::getSpecialLocation(File::currentApplicationFile).getChildFile("contents").getChildFile("Resources").getChildFile("trymakemanifold.mlx");
-    String meshlabCommand = MESHLABSERVER_PATH + " -i " + activeModel->obj.getFullPathName() + " -o " + activeModel->obj.getFullPathName() + " -s " + filterScript.getFullPathName();
-    
-    int ret = system(meshlabCommand.toRawUTF8());
-    cout << "Ran meshlab cleanup with return value " << ret << "\n";
+}
+
+void AutoRig::StartRig()
+{
+    if (activeModel != nullptr) {
+        startRig = true;
+    }
 }
 
 void AutoRig::run()
@@ -76,13 +68,14 @@ void AutoRig::run()
     }
     
     while (!threadShouldExit()) {
-        
-        if (runMeshlabCleanup) {
-            meshlabCleanup();
-            runMeshlabCleanup = false;
-            activeModel->meshLabCleanTally++;
+        if (startRig) {
+            //start rigging!
+            startRig = false;
+            activeModel->rig();
+            for (int i = 0; i < listeners.size(); i++) {
+                listeners[i]->RigDone();
+            }
         }
-        
         sleep(10);
     }
 }

@@ -20,19 +20,19 @@ UIComponent::UIComponent()
     
     addAndMakeVisible(autoRigLabel);
     addAndMakeVisible(loadOBJ);
-    addAndMakeVisible(runMeshlabCleanup);
     addAndMakeVisible(outputLabel);
     addAndMakeVisible(loadExisting);
     addAndMakeVisible(models);
+    addAndMakeVisible(rig);
     
     autoRigLabel.setText("AutoRig", dontSendNotification);
     autoRigLabel.setJustificationType(Justification::centred);
     loadOBJ.setButtonText("Start");
     loadOBJ.addListener(this);
-    runMeshlabCleanup.setButtonText("Run Meshlab Cleanup");
-    runMeshlabCleanup.addListener(this);
     loadExisting.setButtonText("Load Existing");
     loadExisting.addListener(this);
+    rig.setButtonText("Rig");
+    rig.addListener(this);
     
     takeKeyboardFocus(Component::FocusChangeType::focusChangedDirectly);
     
@@ -53,8 +53,9 @@ void UIComponent::resized()
     loadOBJ.setBounds(20, 100, 100, 20);
     loadExisting.setBounds(loadOBJ.getRight(), 100, 100, 20);
     models.setBounds(loadExisting.getX(), loadExisting.getBottom(), loadExisting.getWidth(), loadExisting.getHeight());
-    runMeshlabCleanup.setBounds(loadOBJ.getX(), loadOBJ.getY() + loadOBJ.getHeight(), 100, 20);
     outputLabel.setBounds(20, getHeight() - 40, getWidth() - 40, 20);
+    
+    rig.setBounds(20, 200, getWidth() - 40, 30);
 }
 
 void UIComponent::buttonClicked(Button *b)
@@ -65,10 +66,15 @@ void UIComponent::buttonClicked(Button *b)
                                                   File::nonexistent,
                                                   "*.obj");
         if (chooser.browseForFileToOpen()) {
+            outputLabel.setText("Loading obj...", dontSendNotification);
+            outputLabel.setColour(Label::ColourIds::textColourId, Colours::purple);
             File file = chooser.getResult();
             autoRig->Clear();
             bool res = autoRig->LoadOBJ(file);
+            autoRig->SetActive(autoRig->models.size() - 1);
             Post(res, "LoadOBJ succeeded", "LoadOBJ failed");
+            outputLabel.setText("Loaded obj.", dontSendNotification);
+            outputLabel.setColour(Label::ColourIds::textColourId, Colours::green);
         }
     }
     
@@ -80,9 +86,10 @@ void UIComponent::buttonClicked(Button *b)
         }
     }
     
-    if (b == &runMeshlabCleanup) {
-        bool res = autoRig->RunMeshlabCleanup();
-        Post(res, "runMeshlabCleanup succeeded", "runMeshlabCleanup failed");
+    if (b == &rig) {
+        outputLabel.setText("Rig running...", dontSendNotification);
+        outputLabel.setColour(Label::ColourIds::textColourId, Colours::purple);
+        autoRig->StartRig();
     }
 }
 
@@ -92,6 +99,12 @@ void UIComponent::ModelsUpdated()
     for (int i = 0; i < autoRig->models.size(); i++) {
         models.addItem(autoRig->models[i]->name, i+1);
     }
+}
+
+void UIComponent::RigDone()
+{
+    outputLabel.setText("Rig done.", dontSendNotification);
+    outputLabel.setColour(Label::ColourIds::textColourId, Colours::green);
 }
 
 void UIComponent::Post(bool error, String success, String fail) {

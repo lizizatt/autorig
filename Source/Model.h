@@ -13,23 +13,29 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Pinocchio/mesh.h"
+#include "../Pinocchio/pinocchioApi.h"
 
 class Model
 {
 public:
     const static String modelDirectory;
+    const String MESHLABSERVER_PATH = "/Applications/Meshlab.app/Contents/MacOS/meshlabserver";
     
 public:
     File directory;
     File obj;
     File mtl;
     File jpg;
-    Mesh m;
+    ScopedPointer<Mesh> mesh;
+    ScopedPointer<Skeleton> skeleton;
     int meshLabCleanTally = 0;
     String name;
+    bool rigged = false;
     
     Model (File m);
     bool load();
+    bool runMeshlab();
+    bool rig();
 };
 
 

@@ -22,6 +22,8 @@
 #include "vecutils.h"
 #include "lsqSolver.h"
 
+using namespace PinQuaternion;
+
 class AttachmentPrivate
 {
 public:

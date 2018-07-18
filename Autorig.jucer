@@ -4,7 +4,395 @@
               bundleIdentifier="com.yourcompany.NewProject" includeBinaryInAppConfig="1"
               jucerVersion="3.1.1">
   <MAINGROUP id="oOJRTR" name="AutoRig">
+    <GROUP id="{E82BFC5D-0A5F-61C6-007E-8354D4ED8E88}" name="FBXSDK">
+      <GROUP id="{0BD055F5-F53C-9653-B83B-D13730884FB7}" name="fbxsdk">
+        <GROUP id="{0FA12478-A6B1-A3F5-08B6-5956109336B2}" name="core">
+          <GROUP id="{BDE300B1-06C3-4874-3E90-B5F6BB636B5A}" name="arch">
+            <FILE id="a1vpvA" name="fbxalloc.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/arch/fbxalloc.h"/>
+            <FILE id="ohtBoE" name="fbxarch.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/arch/fbxarch.h"/>
+            <FILE id="eXD5BD" name="fbxdebug.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/arch/fbxdebug.h"/>
+            <FILE id="tENUnr" name="fbxnew.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/arch/fbxnew.h"/>
+            <FILE id="B0gdoq" name="fbxstdcompliant.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/core/arch/fbxstdcompliant.h"/>
+            <FILE id="ounN6j" name="fbxtypes.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/arch/fbxtypes.h"/>
+          </GROUP>
+          <GROUP id="{9B34CD25-DF44-C8D5-CD89-0987EC5DBA42}" name="base">
+            <FILE id="dmnLbx" name="fbxarray.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxarray.h"/>
+            <FILE id="mdILAD" name="fbxbitset.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxbitset.h"/>
+            <FILE id="OrHFsw" name="fbxcharptrset.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxcharptrset.h"/>
+            <FILE id="AXEtbd" name="fbxcontainerallocators.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/core/base/fbxcontainerallocators.h"/>
+            <FILE id="eJRRIK" name="fbxdynamicarray.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/core/base/fbxdynamicarray.h"/>
+            <FILE id="eMWHEM" name="fbxfile.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxfile.h"/>
+            <FILE id="lztAtk" name="fbxfolder.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxfolder.h"/>
+            <FILE id="IphX1O" name="fbxhashmap.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxhashmap.h"/>
+            <FILE id="eXYmMd" name="fbxintrusivelist.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/core/base/fbxintrusivelist.h"/>
+            <FILE id="VjtPxC" name="fbxmap.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxmap.h"/>
+            <FILE id="pu4RMy" name="fbxmemorypool.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxmemorypool.h"/>
+            <FILE id="vlmTLZ" name="fbxmultimap.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxmultimap.h"/>
+            <FILE id="JfZm6F" name="fbxpair.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxpair.h"/>
+            <FILE id="RhaJ9x" name="fbxredblacktree.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/core/base/fbxredblacktree.h"/>
+            <FILE id="fYu0Mc" name="fbxset.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxset.h"/>
+            <FILE id="szNTom" name="fbxstatus.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxstatus.h"/>
+            <FILE id="tzUvUf" name="fbxstring.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxstring.h"/>
+            <FILE id="LsS6WT" name="fbxstringlist.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxstringlist.h"/>
+            <FILE id="cEP3p1" name="fbxtime.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxtime.h"/>
+            <FILE id="VMvX9w" name="fbxtimecode.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxtimecode.h"/>
+            <FILE id="yHcXW2" name="fbxutils.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/base/fbxutils.h"/>
+          </GROUP>
+          <FILE id="eXOe9D" name="fbxclassid.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxclassid.h"/>
+          <FILE id="F2L4V0" name="fbxconnectionpoint.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/core/fbxconnectionpoint.h"/>
+          <FILE id="RhKbNv" name="fbxdatatypes.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxdatatypes.h"/>
+          <FILE id="eJcxZg" name="fbxemitter.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxemitter.h"/>
+          <FILE id="tteNGM" name="fbxevent.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxevent.h"/>
+          <FILE id="nujYeH" name="fbxeventhandler.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/core/fbxeventhandler.h"/>
+          <FILE id="vvYpGx" name="fbxlistener.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxlistener.h"/>
+          <FILE id="cOTnkN" name="fbxloadingstrategy.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/core/fbxloadingstrategy.h"/>
+          <FILE id="olV1TJ" name="fbxmanager.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxmanager.h"/>
+          <FILE id="HdWgkj" name="fbxmodule.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxmodule.h"/>
+          <FILE id="iL3clW" name="fbxobject.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxobject.h"/>
+          <FILE id="VAhWTw" name="fbxperipheral.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxperipheral.h"/>
+          <FILE id="b6c5oP" name="fbxplugin.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxplugin.h"/>
+          <FILE id="gADS32" name="fbxplugincontainer.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/core/fbxplugincontainer.h"/>
+          <FILE id="HJHXKT" name="fbxproperty.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxproperty.h"/>
+          <FILE id="MhDLzY" name="fbxpropertydef.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/core/fbxpropertydef.h"/>
+          <FILE id="X3hY9M" name="fbxpropertyhandle.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/core/fbxpropertyhandle.h"/>
+          <FILE id="Cr9Nlq" name="fbxpropertypage.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/core/fbxpropertypage.h"/>
+          <FILE id="grlenM" name="fbxpropertytypes.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/core/fbxpropertytypes.h"/>
+          <FILE id="drCSmm" name="fbxquery.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxquery.h"/>
+          <FILE id="tF3xkb" name="fbxqueryevent.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxqueryevent.h"/>
+          <FILE id="ILuc8Q" name="fbxscopedloadingdirectory.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/core/fbxscopedloadingdirectory.h"/>
+          <FILE id="Fvz6xB" name="fbxscopedloadingfilename.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/core/fbxscopedloadingfilename.h"/>
+          <FILE id="CgHsQg" name="fbxstream.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxstream.h"/>
+          <FILE id="PGWeWQ" name="fbxsymbol.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxsymbol.h"/>
+          <FILE id="ACTnmu" name="fbxsystemunit.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxsystemunit.h"/>
+          <FILE id="pRjM8j" name="fbxxref.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/fbxxref.h"/>
+          <GROUP id="{312F2204-D6AF-FBD3-A745-860ABC549650}" name="math">
+            <FILE id="sUOFC4" name="fbxaffinematrix.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/core/math/fbxaffinematrix.h"/>
+            <FILE id="uGac7r" name="fbxdualquaternion.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/core/math/fbxdualquaternion.h"/>
+            <FILE id="Yi0f2Q" name="fbxmath.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/math/fbxmath.h"/>
+            <FILE id="KI8yNB" name="fbxmatrix.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/math/fbxmatrix.h"/>
+            <FILE id="sOrxgE" name="fbxquaternion.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/math/fbxquaternion.h"/>
+            <FILE id="wS0BLE" name="fbxtransforms.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/math/fbxtransforms.h"/>
+            <FILE id="j3XxOu" name="fbxvector2.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/math/fbxvector2.h"/>
+            <FILE id="Au9Q0B" name="fbxvector4.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/math/fbxvector4.h"/>
+          </GROUP>
+          <GROUP id="{D1DA7F98-8DEE-F0D9-4C38-7BADFA5A2D02}" name="sync">
+            <FILE id="nDfqo3" name="fbxatomic.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/sync/fbxatomic.h"/>
+            <FILE id="niBKSe" name="fbxclock.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/sync/fbxclock.h"/>
+            <FILE id="RZUZRo" name="fbxsync.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/sync/fbxsync.h"/>
+            <FILE id="Ut6nT3" name="fbxthread.h" compile="0" resource="0" file="FBXSDK/fbxsdk/core/sync/fbxthread.h"/>
+          </GROUP>
+        </GROUP>
+        <FILE id="e0U6Pb" name="fbxsdk_def.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fbxsdk_def.h"/>
+        <FILE id="uMWr5R" name="fbxsdk_nsbegin.h" compile="0" resource="0"
+              file="FBXSDK/fbxsdk/fbxsdk_nsbegin.h"/>
+        <FILE id="Cy5QUI" name="fbxsdk_nsend.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fbxsdk_nsend.h"/>
+        <FILE id="hBT7fB" name="fbxsdk_version.h" compile="0" resource="0"
+              file="FBXSDK/fbxsdk/fbxsdk_version.h"/>
+        <GROUP id="{056FE644-6AA8-1C22-5D54-35B06C605ECF}" name="fileio">
+          <GROUP id="{468871BE-CF62-05C8-382D-145971014071}" name="collada">
+            <FILE id="bcOMcs" name="fbxcolladaanimationelement.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/fileio/collada/fbxcolladaanimationelement.h"/>
+            <FILE id="i2U3qw" name="fbxcolladaelement.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/fileio/collada/fbxcolladaelement.h"/>
+            <FILE id="LqaEmv" name="fbxcolladaiostream.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/fileio/collada/fbxcolladaiostream.h"/>
+            <FILE id="fZSgrv" name="fbxcolladanamespace.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/fileio/collada/fbxcolladanamespace.h"/>
+            <FILE id="ZSarGv" name="fbxcolladatokens.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/fileio/collada/fbxcolladatokens.h"/>
+            <FILE id="ZCEHDp" name="fbxcolladautils.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/fileio/collada/fbxcolladautils.h"/>
+            <FILE id="q4wh1N" name="fbxreadercollada14.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/fileio/collada/fbxreadercollada14.h"/>
+            <FILE id="npocEY" name="fbxwritercollada14.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/fileio/collada/fbxwritercollada14.h"/>
+          </GROUP>
+          <GROUP id="{8149D528-8A96-236D-F016-A094E7530038}" name="fbx">
+            <FILE id="GKvhlV" name="fbxio.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbx/fbxio.h"/>
+            <FILE id="dVUbJE" name="fbxreaderfbx5.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbx/fbxreaderfbx5.h"/>
+            <FILE id="MaCamp" name="fbxreaderfbx6.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbx/fbxreaderfbx6.h"/>
+            <FILE id="yuOgbp" name="fbxreaderfbx7.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbx/fbxreaderfbx7.h"/>
+            <FILE id="joLVti" name="fbxwriterfbx5.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbx/fbxwriterfbx5.h"/>
+            <FILE id="FH35E4" name="fbxwriterfbx6.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbx/fbxwriterfbx6.h"/>
+            <FILE id="ZG9kRu" name="fbxwriterfbx7.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbx/fbxwriterfbx7.h"/>
+          </GROUP>
+          <FILE id="OUPPVm" name="fbxbase64coder.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/fileio/fbxbase64coder.h"/>
+          <FILE id="EsayYp" name="fbxexporter.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbxexporter.h"/>
+          <FILE id="NDBYO7" name="fbxexternaldocreflistener.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/fileio/fbxexternaldocreflistener.h"/>
+          <FILE id="F0NoFS" name="fbxfiletokens.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbxfiletokens.h"/>
+          <FILE id="VCZ4CB" name="fbxglobalcamerasettings.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/fileio/fbxglobalcamerasettings.h"/>
+          <FILE id="PK8McG" name="fbxgloballightsettings.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/fileio/fbxgloballightsettings.h"/>
+          <FILE id="pSwcl9" name="fbxglobalsettings.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/fileio/fbxglobalsettings.h"/>
+          <FILE id="sa7y7L" name="fbxgobo.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbxgobo.h"/>
+          <FILE id="vKWm7T" name="fbximporter.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbximporter.h"/>
+          <FILE id="rSXN25" name="fbxiobase.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbxiobase.h"/>
+          <FILE id="LeONci" name="fbxiopluginregistry.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/fileio/fbxiopluginregistry.h"/>
+          <FILE id="Nm9LWU" name="fbxiosettings.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbxiosettings.h"/>
+          <FILE id="TbWEnA" name="fbxiosettingspath.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/fileio/fbxiosettingspath.h"/>
+          <FILE id="oGU834" name="fbxprogress.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbxprogress.h"/>
+          <FILE id="Np69hs" name="fbxreader.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbxreader.h"/>
+          <FILE id="OmttfS" name="fbxstatistics.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbxstatistics.h"/>
+          <FILE id="aWm7zo" name="fbxstatisticsfbx.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/fileio/fbxstatisticsfbx.h"/>
+          <FILE id="L5RmP2" name="fbxwriter.h" compile="0" resource="0" file="FBXSDK/fbxsdk/fileio/fbxwriter.h"/>
+        </GROUP>
+        <GROUP id="{9C99F54C-5B55-0DD4-C589-578AC9C88706}" name="scene">
+          <GROUP id="{1BDD88D2-7466-03CF-8E97-E74D361B582A}" name="animation">
+            <FILE id="lqFjUD" name="fbxanimcurve.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/animation/fbxanimcurve.h"/>
+            <FILE id="PHao9V" name="fbxanimcurvebase.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/animation/fbxanimcurvebase.h"/>
+            <FILE id="MWgC2m" name="fbxanimcurvefilters.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/animation/fbxanimcurvefilters.h"/>
+            <FILE id="Hj06RD" name="fbxanimcurvenode.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/animation/fbxanimcurvenode.h"/>
+            <FILE id="WNp6Be" name="fbxanimevalclassic.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/animation/fbxanimevalclassic.h"/>
+            <FILE id="fYqGrw" name="fbxanimevalstate.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/animation/fbxanimevalstate.h"/>
+            <FILE id="TtsRFW" name="fbxanimevaluator.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/animation/fbxanimevaluator.h"/>
+            <FILE id="bzTIrB" name="fbxanimlayer.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/animation/fbxanimlayer.h"/>
+            <FILE id="bn1DJe" name="fbxanimstack.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/animation/fbxanimstack.h"/>
+            <FILE id="chQary" name="fbxanimutilities.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/animation/fbxanimutilities.h"/>
+          </GROUP>
+          <GROUP id="{704E5BA6-B7FC-96D6-BC59-73861A2C8699}" name="constraint">
+            <FILE id="JGETBt" name="fbxcharacter.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/constraint/fbxcharacter.h"/>
+            <FILE id="KtMUpr" name="fbxcharacternodename.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/constraint/fbxcharacternodename.h"/>
+            <FILE id="p2WOPO" name="fbxcharacterpose.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/constraint/fbxcharacterpose.h"/>
+            <FILE id="kkkJg8" name="fbxconstraint.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/constraint/fbxconstraint.h"/>
+            <FILE id="yopkf0" name="fbxconstraintaim.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/constraint/fbxconstraintaim.h"/>
+            <FILE id="UHcq3f" name="fbxconstraintcustom.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/constraint/fbxconstraintcustom.h"/>
+            <FILE id="Aa0rmu" name="fbxconstraintparent.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/constraint/fbxconstraintparent.h"/>
+            <FILE id="V8nNP7" name="fbxconstraintposition.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/constraint/fbxconstraintposition.h"/>
+            <FILE id="qONXlp" name="fbxconstraintrotation.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/constraint/fbxconstraintrotation.h"/>
+            <FILE id="IxlVqZ" name="fbxconstraintscale.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/constraint/fbxconstraintscale.h"/>
+            <FILE id="w24MZB" name="fbxconstraintsinglechainik.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/constraint/fbxconstraintsinglechainik.h"/>
+            <FILE id="A6WuLz" name="fbxconstraintutils.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/constraint/fbxconstraintutils.h"/>
+            <FILE id="aPX3Ax" name="fbxcontrolset.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/constraint/fbxcontrolset.h"/>
+            <FILE id="SUG7Sp" name="fbxhik2fbxcharacter.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/constraint/fbxhik2fbxcharacter.h"/>
+          </GROUP>
+          <FILE id="PWChTe" name="fbxaudio.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/fbxaudio.h"/>
+          <FILE id="qgO1RQ" name="fbxaudiolayer.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/fbxaudiolayer.h"/>
+          <FILE id="N97sff" name="fbxaxissystem.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/fbxaxissystem.h"/>
+          <FILE id="f08SxC" name="fbxcollection.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/fbxcollection.h"/>
+          <FILE id="WJXiLz" name="fbxcollectionexclusive.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/scene/fbxcollectionexclusive.h"/>
+          <FILE id="YRMCtR" name="fbxcontainer.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/fbxcontainer.h"/>
+          <FILE id="Q7fDwY" name="fbxcontainertemplate.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/scene/fbxcontainertemplate.h"/>
+          <FILE id="mHEX0E" name="fbxdisplaylayer.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/scene/fbxdisplaylayer.h"/>
+          <FILE id="Tk8mRs" name="fbxdocument.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/fbxdocument.h"/>
+          <FILE id="bEiPcK" name="fbxdocumentinfo.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/scene/fbxdocumentinfo.h"/>
+          <FILE id="SQ9WtP" name="fbxenvironment.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/scene/fbxenvironment.h"/>
+          <FILE id="AhKvny" name="fbxgroupname.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/fbxgroupname.h"/>
+          <FILE id="vvnMtb" name="fbxlibrary.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/fbxlibrary.h"/>
+          <FILE id="MGU3Xo" name="fbxmediaclip.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/fbxmediaclip.h"/>
+          <FILE id="DFmTHu" name="fbxobjectfilter.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/scene/fbxobjectfilter.h"/>
+          <FILE id="YAtDyk" name="fbxobjectmetadata.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/scene/fbxobjectmetadata.h"/>
+          <FILE id="exFyfK" name="fbxobjectscontainer.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/scene/fbxobjectscontainer.h"/>
+          <FILE id="HB7pCf" name="fbxpose.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/fbxpose.h"/>
+          <FILE id="wq15PG" name="fbxreference.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/fbxreference.h"/>
+          <FILE id="PvCv6y" name="fbxscene.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/fbxscene.h"/>
+          <FILE id="P7dBpb" name="fbxselectionnode.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/scene/fbxselectionnode.h"/>
+          <FILE id="ldLKdG" name="fbxselectionset.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/scene/fbxselectionset.h"/>
+          <FILE id="LS36GB" name="fbxtakeinfo.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/fbxtakeinfo.h"/>
+          <FILE id="iN72e0" name="fbxthumbnail.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/fbxthumbnail.h"/>
+          <FILE id="N0Fdx6" name="fbxvideo.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/fbxvideo.h"/>
+          <GROUP id="{C52723BC-EAEE-B531-766C-5AEDAD8E4E4D}" name="geometry">
+            <FILE id="OX8Qjf" name="fbxblendshape.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxblendshape.h"/>
+            <FILE id="i2KVmA" name="fbxblendshapechannel.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxblendshapechannel.h"/>
+            <FILE id="qZWTLs" name="fbxcache.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxcache.h"/>
+            <FILE id="ybteTY" name="fbxcachedeffect.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxcachedeffect.h"/>
+            <FILE id="L0OwGG" name="fbxcamera.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxcamera.h"/>
+            <FILE id="bdcowt" name="fbxcamerastereo.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxcamerastereo.h"/>
+            <FILE id="X8GNS1" name="fbxcameraswitcher.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxcameraswitcher.h"/>
+            <FILE id="dVWrew" name="fbxcluster.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxcluster.h"/>
+            <FILE id="IiEjWz" name="fbxdeformer.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxdeformer.h"/>
+            <FILE id="TU1VE0" name="fbxgenericnode.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxgenericnode.h"/>
+            <FILE id="mvW5ZU" name="fbxgeometry.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxgeometry.h"/>
+            <FILE id="gxsM6l" name="fbxgeometrybase.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxgeometrybase.h"/>
+            <FILE id="QFAJZO" name="fbxgeometryweightedmap.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxgeometryweightedmap.h"/>
+            <FILE id="qP99XP" name="fbxlayer.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxlayer.h"/>
+            <FILE id="vt8oTk" name="fbxlayercontainer.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxlayercontainer.h"/>
+            <FILE id="IZRyxg" name="fbxlight.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxlight.h"/>
+            <FILE id="w9aOrh" name="fbxlimitsutilities.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxlimitsutilities.h"/>
+            <FILE id="w68CeP" name="fbxline.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxline.h"/>
+            <FILE id="OOiF7Q" name="fbxlodgroup.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxlodgroup.h"/>
+            <FILE id="K0IIrv" name="fbxmarker.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxmarker.h"/>
+            <FILE id="cIbkNv" name="fbxmesh.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxmesh.h"/>
+            <FILE id="PObBzI" name="fbxnode.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxnode.h"/>
+            <FILE id="AklAuc" name="fbxnodeattribute.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxnodeattribute.h"/>
+            <FILE id="jR7KTq" name="fbxnull.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxnull.h"/>
+            <FILE id="wdWGI9" name="fbxnurbs.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxnurbs.h"/>
+            <FILE id="uc4AuO" name="fbxnurbscurve.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxnurbscurve.h"/>
+            <FILE id="WcQv1M" name="fbxnurbssurface.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxnurbssurface.h"/>
+            <FILE id="thD0Or" name="fbxopticalreference.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxopticalreference.h"/>
+            <FILE id="IdoaBI" name="fbxpatch.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxpatch.h"/>
+            <FILE id="r3VxSc" name="fbxproceduralgeometry.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxproceduralgeometry.h"/>
+            <FILE id="extgi7" name="fbxshape.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxshape.h"/>
+            <FILE id="GbpUpC" name="fbxskeleton.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxskeleton.h"/>
+            <FILE id="SI5Zax" name="fbxskin.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxskin.h"/>
+            <FILE id="fvH8Tv" name="fbxsubdeformer.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxsubdeformer.h"/>
+            <FILE id="zbK9fn" name="fbxsubdiv.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/geometry/fbxsubdiv.h"/>
+            <FILE id="VJ7Byf" name="fbxtrimnurbssurface.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxtrimnurbssurface.h"/>
+            <FILE id="AtvzwP" name="fbxvertexcachedeformer.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxvertexcachedeformer.h"/>
+            <FILE id="K4Pv5r" name="fbxweightedmapping.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/geometry/fbxweightedmapping.h"/>
+          </GROUP>
+          <GROUP id="{7C1D5062-0B58-7969-3361-A34D3110F4D3}" name="shading">
+            <FILE id="g9LejD" name="fbxbindingoperator.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxbindingoperator.h"/>
+            <FILE id="tbu6Ox" name="fbxbindingsentryview.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxbindingsentryview.h"/>
+            <FILE id="tJ8iV3" name="fbxbindingtable.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxbindingtable.h"/>
+            <FILE id="pi2oeY" name="fbxbindingtablebase.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxbindingtablebase.h"/>
+            <FILE id="NKGc9l" name="fbxbindingtableentry.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxbindingtableentry.h"/>
+            <FILE id="XBCwyC" name="fbxconstantentryview.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxconstantentryview.h"/>
+            <FILE id="cu2yFA" name="fbxentryview.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/shading/fbxentryview.h"/>
+            <FILE id="tVcgl8" name="fbxfiletexture.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxfiletexture.h"/>
+            <FILE id="voj4gE" name="fbximplementation.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbximplementation.h"/>
+            <FILE id="xhNeWV" name="fbximplementationfilter.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbximplementationfilter.h"/>
+            <FILE id="YghsdG" name="fbximplementationutils.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbximplementationutils.h"/>
+            <FILE id="PoLa6c" name="fbxlayeredtexture.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxlayeredtexture.h"/>
+            <FILE id="YdFBgR" name="fbxlayerentryview.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxlayerentryview.h"/>
+            <FILE id="JmgYfs" name="fbxoperatorentryview.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxoperatorentryview.h"/>
+            <FILE id="A4G0xi" name="fbxproceduraltexture.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxproceduraltexture.h"/>
+            <FILE id="Ql2MqP" name="fbxpropertyentryview.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxpropertyentryview.h"/>
+            <FILE id="gEhQh6" name="fbxsemanticentryview.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxsemanticentryview.h"/>
+            <FILE id="P0VJqq" name="fbxshadingconventions.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxshadingconventions.h"/>
+            <FILE id="kToI90" name="fbxsurfacelambert.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxsurfacelambert.h"/>
+            <FILE id="eDktVF" name="fbxsurfacematerial.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxsurfacematerial.h"/>
+            <FILE id="E2YA5v" name="fbxsurfacephong.h" compile="0" resource="0"
+                  file="FBXSDK/fbxsdk/scene/shading/fbxsurfacephong.h"/>
+            <FILE id="QfTi58" name="fbxtexture.h" compile="0" resource="0" file="FBXSDK/fbxsdk/scene/shading/fbxtexture.h"/>
+          </GROUP>
+        </GROUP>
+        <GROUP id="{C9F89EC3-1E0A-37A7-0C92-8320655BE816}" name="utils">
+          <FILE id="P3gy7B" name="fbxclonemanager.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/utils/fbxclonemanager.h"/>
+          <FILE id="vxJHMo" name="fbxdeformationsevaluator.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/utils/fbxdeformationsevaluator.h"/>
+          <FILE id="mNYEeM" name="fbxembeddedfilesaccumulator.h" compile="0"
+                resource="0" file="FBXSDK/fbxsdk/utils/fbxembeddedfilesaccumulator.h"/>
+          <FILE id="e5JSkS" name="fbxgeometryconverter.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/utils/fbxgeometryconverter.h"/>
+          <FILE id="eBcSuv" name="fbxmanipulators.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/utils/fbxmanipulators.h"/>
+          <FILE id="IDv9mm" name="fbxmaterialconverter.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/utils/fbxmaterialconverter.h"/>
+          <FILE id="dZE3rB" name="fbxnamehandler.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/utils/fbxnamehandler.h"/>
+          <FILE id="K3cBlX" name="fbxprocessor.h" compile="0" resource="0" file="FBXSDK/fbxsdk/utils/fbxprocessor.h"/>
+          <FILE id="rHz81O" name="fbxprocessorshaderdependency.h" compile="0"
+                resource="0" file="FBXSDK/fbxsdk/utils/fbxprocessorshaderdependency.h"/>
+          <FILE id="sAOyb0" name="fbxprocessorxref.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/utils/fbxprocessorxref.h"/>
+          <FILE id="aY2UhP" name="fbxprocessorxrefuserlib.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/utils/fbxprocessorxrefuserlib.h"/>
+          <FILE id="dHBIPa" name="fbxrenamingstrategy.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/utils/fbxrenamingstrategy.h"/>
+          <FILE id="JHzzMB" name="fbxrenamingstrategybase.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/utils/fbxrenamingstrategybase.h"/>
+          <FILE id="cXPxxS" name="fbxrenamingstrategyfbx5.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/utils/fbxrenamingstrategyfbx5.h"/>
+          <FILE id="FbZyHe" name="fbxrenamingstrategyfbx6.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/utils/fbxrenamingstrategyfbx6.h"/>
+          <FILE id="LxlA1y" name="fbxrenamingstrategyfbx7.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/utils/fbxrenamingstrategyfbx7.h"/>
+          <FILE id="hvWg6D" name="fbxrenamingstrategyutilities.h" compile="0"
+                resource="0" file="FBXSDK/fbxsdk/utils/fbxrenamingstrategyutilities.h"/>
+          <FILE id="SAxUXp" name="fbxrootnodeutility.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/utils/fbxrootnodeutility.h"/>
+          <FILE id="ij1z9B" name="fbxscenecheckutility.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/utils/fbxscenecheckutility.h"/>
+          <FILE id="t3GjFg" name="fbxusernotification.h" compile="0" resource="0"
+                file="FBXSDK/fbxsdk/utils/fbxusernotification.h"/>
+        </GROUP>
+      </GROUP>
+      <FILE id="bWPsn7" name="fbxsdk.h" compile="0" resource="0" file="FBXSDK/fbxsdk.h"/>
+    </GROUP>
     <GROUP id="{A033381A-9864-7A2A-0B20-AA5FD37A673A}" name="Resources">
+      <FILE id="mizePL" name="fragmentshader" compile="0" resource="1" file="Resources/fragmentshader"/>
+      <FILE id="frXrE4" name="vertexshader" compile="0" resource="1" file="Resources/vertexshader"/>
+      <FILE id="isRO9v" name="poissonreconstruct.mlx" compile="0" resource="0"
+            file="Resources/poissonreconstruct.mlx"/>
       <FILE id="DVeToL" name="trymakemanifold.mlx" compile="0" resource="0"
             file="Resources/trymakemanifold.mlx"/>
     </GROUP>
@@ -48,6 +436,10 @@
       <FILE id="Gk8oSV" name="vecutils.h" compile="0" resource="0" file="Pinocchio/vecutils.h"/>
     </GROUP>
     <GROUP id="{D4292D6E-AD46-1A18-0CC2-B291C4FAB6E1}" name="Source">
+      <FILE id="NhuhYd" name="Types.h" compile="0" resource="0" file="Source/Types.h"/>
+      <FILE id="TMT9YG" name="Util.h" compile="0" resource="0" file="Source/Util.h"/>
+      <FILE id="cOYNrB" name="WavefrontObjParser.h" compile="0" resource="0"
+            file="Source/WavefrontObjParser.h"/>
       <GROUP id="{5072DCAC-66F6-9DAC-0E4A-387A7CFA72AA}" name="Autorig">
         <FILE id="jrvYu2" name="Model.cpp" compile="1" resource="0" file="Source/Model.cpp"/>
         <FILE id="goxdfd" name="Model.h" compile="0" resource="0" file="Source/Model.h"/>
@@ -67,7 +459,8 @@
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>
-    <XCODE_MAC targetFolder="Builds/MacOSX">
+    <XCODE_MAC targetFolder="Builds/MacOSX" externalLibraries="fbxsdk" extraLinkerFlags="../../FBXSDK/clang/release/"
+               extraCompilerFlags="&#10;-Wno-inconsistent-missing-override&#10;-Wno-non-virtual-dtor&#10;-Wno-unused-const-variable&#10;-Wno-switch&#10;-Wno-unused-variable&#10;-Wno-unused-const-variable">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" osxSDK="default" osxCompatibility="default" osxArchitecture="default"
                        isDebug="1" optimisation="1" targetName="AutoRig" customXcodeFlags="MACOSX_DEPLAYMENT_TARGET_i386=11"/>

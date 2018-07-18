@@ -30,9 +30,9 @@ public:
     //==============================================================================
     MainContentComponent()
     {
-        addAndMakeVisible(graphicsComponent = new GraphicsComponent());
+        //addAndMakeVisible(graphicsComponent = new GraphicsComponent());
         addAndMakeVisible(uiComponent = new UIComponent());
-        setSize (1200, 800);
+        setSize (600, 400);
     }
 
     void paint (Graphics& g) override
@@ -41,9 +41,9 @@ public:
 
     void resized() override
     {
-        float uiWidth = .2;
+        float uiWidth = 1.0;
         uiComponent->setBounds(0, 0, getWidth() * uiWidth, getHeight());
-        graphicsComponent->setBounds(uiComponent->getRight(), 0, getWidth() - uiComponent->getRight(), getHeight());
+        //graphicsComponent->setBounds(uiComponent->getRight(), 0, getWidth() - uiComponent->getRight(), getHeight());
     }
 
 

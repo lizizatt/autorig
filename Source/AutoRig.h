@@ -17,15 +17,16 @@
 class AutoRigListener {
 public:
     virtual void ModelsUpdated() {}
+    virtual void RigDone() {}
+    virtual void NewActiveModel() {}
 };
 
 class AutoRig : public Thread
 {
 public:
-    const String MESHLABSERVER_PATH = "/Applications/Meshlab.app/Contents/MacOS/meshlabserver";
 
     OwnedArray<Model> models;
-    bool runMeshlabCleanup = false;
+    bool startRig = false;
     
     Model* activeModel = nullptr;
     
@@ -36,7 +37,7 @@ public:
     void Clear();
     bool LoadOBJ(File file);
     void SetActive(int index);
-    bool RunMeshlabCleanup();
+    void StartRig();
     
     void AddListener(AutoRigListener *l);
     void RemoveListener(AutoRigListener *l);
@@ -44,7 +45,6 @@ public:
     void run();
     
 private:
-    void meshlabCleanup();
     Array<AutoRigListener*> listeners;
 };
 

@@ -36,18 +36,45 @@ Model::Model(File m)
         mtlOrig.copyFileTo(jpg);
     }
     else {
+        cout << "Do not need to run meshlab on model " << name << "\n";
+        return;
     }
     
-    bool res = load();
+    bool res = runMeshlab();
     if (res) {
-        cout << "Loaded model " << name << "\n";
+        cout << "Ran meshlab on model " << name << "\n";
     }
     else {
-        cout << "Failed to load model " << name << "\n";
+        cout << "Failed to run meshlab on model" << name << "\n";
     }
+    
 }
 
 bool Model::load()
 {
-    m.
+    mesh = new Mesh(obj.getFullPathName().toRawUTF8());
+    skeleton = new HumanSkeleton();
+    return mesh->vertices.size() > 0;
+}
+
+
+bool Model::runMeshlab()
+{
+    File filterScript = File::getSpecialLocation(File::currentApplicationFile).getChildFile("contents").getChildFile("Resources").getChildFile("poissonreconstruct.mlx");
+    String meshlabCommand = MESHLABSERVER_PATH + " -i " + obj.getFullPathName() + " -o " + obj.getFullPathName() + " -s " + filterScript.getFullPathName();
+    
+    int ret = system(meshlabCommand.toRawUTF8());
+    cout << "Ran meshlab cleanup with return value " << ret << "\n";
+    
+    return ret == 0;
+}
+
+bool Model::rig()
+{
+    if (rigged) {
+        return true;
+    }
+    
+    autorig(*skeleton, *mesh);
+    return true;
 }

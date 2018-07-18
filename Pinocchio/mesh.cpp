@@ -100,7 +100,6 @@ void Mesh::computeTopology()
         
         if(halfEdgeMap[v1].count(v2)) {
             cout << "Error: duplicate edge detected: " << v1 << " to " << v2 << endl;
-            OUT;
         }
         halfEdgeMap[v1][v2] = i;
         if(halfEdgeMap[v2].count(v1)) {

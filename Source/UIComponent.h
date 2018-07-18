@@ -29,6 +29,7 @@ public:
     void buttonClicked(Button *b) override;
     
     virtual void ModelsUpdated() override;
+    virtual void RigDone() override;
     
     void Post(bool error, String success, String fail);
     
@@ -39,7 +40,7 @@ private:
     ComboBox models;
     TextButton loadExisting;
     TextButton loadOBJ;
-    TextButton runMeshlabCleanup;
+    TextButton rig;
     Label outputLabel;
     AutoRig *autoRig;
 };

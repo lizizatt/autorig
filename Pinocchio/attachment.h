@@ -71,7 +71,7 @@ public:
     Attachment(const Mesh &mesh, const Skeleton &skeleton, const vector<Vector3> &match, const VisibilityTester *tester);
     virtual ~Attachment();
 
-    Mesh deform(const Mesh &mesh, const vector<Transform<> > &transforms) const;
+    Mesh deform(const Mesh &mesh, const vector<PinQuaternion::Transform<> > &transforms) const;
     Vector<double, -1> getWeights(int i) const;
 private:
     AttachmentPrivate *a;

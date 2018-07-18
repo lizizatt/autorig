@@ -21,6 +21,8 @@
 
 #include "vector.h"
 
+namespace PinQuaternion {
+    
 template<class Real = double>
 class Quaternion //normalized quaternion for representing rotations
 {
@@ -206,5 +208,5 @@ template <class charT, class traits, class Real>
     os << "[" << m[6] << "," << m[7] << "," << m[8] << "]]";
     return os;
 }
-
+}
 #endif

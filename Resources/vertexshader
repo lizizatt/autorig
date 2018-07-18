@@ -1,0 +1,16 @@
+attribute vec3 pos;
+attribute vec3 norm;
+attribute vec3 color;
+attribute vec3 viewDir;
+varying vec3 f_viewDir;
+varying vec3 f_norm;
+uniform mat4 m_mvp;
+varying vec3 f_color;
+
+void main(void) 
+{
+    gl_Position = m_mvp * vec4(pos, 1.0);
+    f_norm = norm;
+    f_color = color;
+    f_viewDir = viewDir;
+}
