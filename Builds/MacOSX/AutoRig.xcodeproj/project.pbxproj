@@ -3561,10 +3561,7 @@
 					"-Wno-unused-variable",
 					"-Wno-unused-const-variable",
 				);
-				OTHER_LDFLAGS = (
-					"-L../../FBXSDK/clang/release/",
-					"-lfbxsdk",
-				);
+				OTHER_LDFLAGS = ../../FBXSDK/clang/release/libfbxsdk.a;
 				SDKROOT_ppc = macosx10.5;
 			};
 			name = Debug;
@@ -3625,10 +3622,7 @@
 					"-Wno-unused-variable",
 					"-Wno-unused-const-variable",
 				);
-				OTHER_LDFLAGS = (
-					"-L../../FBXSDK/clang/release/",
-					"-lfbxsdk",
-				);
+				OTHER_LDFLAGS = ../../FBXSDK/clang/release/libfbxsdk.a;
 				SDKROOT_ppc = macosx10.5;
 			};
 			name = Release;
