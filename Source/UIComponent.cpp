@@ -24,6 +24,7 @@ UIComponent::UIComponent()
     addAndMakeVisible(models);
     addAndMakeVisible(rig);
     addAndMakeVisible(openFolder);
+    addAndMakeVisible(genFbx);
     
     loadOBJ.setButtonText("Load File");
     loadOBJ.addListener(this);
@@ -33,11 +34,14 @@ UIComponent::UIComponent()
     rig.addListener(this);
     openFolder.setButtonText("Open Folder");
     openFolder.addListener(this);
+    genFbx.addListener(this);
+    genFbx.setButtonText("Generate FBX");
     
     buttonHelper(loadOBJ);
     buttonHelper(loadExisting);
     buttonHelper(rig);
     buttonHelper(openFolder);
+    buttonHelper(genFbx);
     
     background = ImageCache::getFromMemory(BinaryData::Hackathon_18_FINAL_jpg, BinaryData::Hackathon_18_FINAL_jpgSize);
     
@@ -72,6 +76,7 @@ void UIComponent::resized()
     
     rig.setBounds(20, 200, getWidth() - 40, 30);
     openFolder.setBounds(loadExisting.getX(), rig.getBottom() + 5, getWidth() / 2 - 40, 20);
+    genFbx.setBounds(loadOBJ.getX(), rig.getBottom() + 5, getWidth() / 2 - 40, 20);
 }
 
 void UIComponent::buttonClicked(Button *b)
@@ -111,6 +116,10 @@ void UIComponent::buttonClicked(Button *b)
     if (b == &openFolder && autoRig->activeModel != nullptr) {
         autoRig->activeModel->obj.revealToUser();
     }
+    
+    if (b == &genFbx) {
+        autoRig->GenFBX();
+    }
 }
 
 void UIComponent::ModelsUpdated()
@@ -123,6 +132,7 @@ void UIComponent::ModelsUpdated()
 
 void UIComponent::RigDone()
 {
+    MessageManagerLock lock;
     outputLabel.setText("Rig done.", dontSendNotification);
     outputLabel.setColour(Label::ColourIds::textColourId, Colours::green);
 }

@@ -26,7 +26,6 @@ public:
 public:
     File directory;
     File obj;
-    File obj_cleaned;
     File obj_poisson;
     File mtl;
     File jpg;
@@ -35,6 +34,7 @@ public:
     ScopedPointer<Skeleton> skeleton;
     String name;
     bool rigged = false;
+    PinocchioOutput pOut;
     
     FbxManager *fbxManager;
     
@@ -42,6 +42,9 @@ public:
     bool load();
     bool runMeshlab();
     bool rig();
+    bool genFBX();
+    void CreateTexture(FbxScene* pScene, FbxMesh* pMesh);
+
 };
 
 

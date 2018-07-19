@@ -27,6 +27,7 @@ public:
 
     OwnedArray<Model> models;
     bool startRig = false;
+    bool genFbx = false;
     
     Model* activeModel = nullptr;
     
@@ -40,6 +41,7 @@ public:
     bool LoadOBJ(File file);
     void SetActive(int index);
     void StartRig();
+    void GenFBX();
     
     void AddListener(AutoRigListener *l);
     void RemoveListener(AutoRigListener *l);

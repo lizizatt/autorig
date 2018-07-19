@@ -29,7 +29,6 @@ Model::Model(File m)
     
     obj = directory.getChildFile(m.getFileName());
     obj_poisson = directory.getChildFile(m.getFileNameWithoutExtension() + "_poisson" + m.getFileExtension());
-    obj_cleaned = directory.getChildFile(m.getFileNameWithoutExtension() + "_cleaned" + m.getFileExtension());
     mtl = directory.getChildFile(name + ".mtl");
     jpg = directory.getChildFile(name + ".jpg");
     
@@ -38,7 +37,7 @@ Model::Model(File m)
         File mtlOrig = m.getSiblingFile(mtl.getFileName());
         mtlOrig.copyFileTo(mtl);
         File jpgOrig = m.getSiblingFile(jpg.getFileName());
-        mtlOrig.copyFileTo(jpg);
+        jpgOrig.copyFileTo(jpg);
     }
     else {
         cout << "Do not need to run meshlab on model " << name << "\n";
@@ -73,13 +72,7 @@ bool Model::runMeshlab()
     int ret1 = system(meshlabCommand.toRawUTF8());
     cout << "Ran meshlab poisson generation with return value " << ret1 << "\n";
     
-    filterScript = File::getSpecialLocation(File::currentApplicationFile).getChildFile("contents").getChildFile("Resources").getChildFile("clean.mlx");
-    meshlabCommand = MESHLABSERVER_PATH + " -i " + obj.getFullPathName() + " -o " + obj_cleaned.getFullPathName() + " -s " + filterScript.getFullPathName();
-    
-    int ret2 = system(meshlabCommand.toRawUTF8());
-    cout << "Ran meshlab clean with return value " << ret2 << "\n";
-    
-    return ret1 == 0 && ret2 == 0;
+    return ret1 == 0;
 }
 
 bool Model::rig()
@@ -89,17 +82,91 @@ bool Model::rig()
     }
     
     //poisson mesh pinocchio output
-    PinocchioOutput pout = autorig(*skeleton, *mesh_poisson);
+    pOut = autorig(*skeleton, *mesh_poisson);
+    //****************
+  
+    return genFBX();
+}
+
+bool Model::genFBX()
+{
     
-    //make fbx file
+    //assemble fbx
     FbxScene* lScene = FbxScene::Create(fbxManager, "AutorigOutput");
     FbxNode* lNode = FbxNode::Create(lScene, "node");
     FbxMesh* lMesh = FbxMesh::Create(lScene, "mesh");
     
+    lNode->SetNodeAttribute(lMesh);
+    CreateTexture(lScene, lMesh);
+    
+    // Add the mesh node to the root node in the scene.
+    FbxNode *rootNode = lScene->GetRootNode();
+    rootNode->AddChild(lNode);
+    
+    //set up ways to access arrays
+    Array<WavefrontObjFileWithVertexColors::Vertex>& verts = mesh->shapes[0]->mesh.vertices;
+    int numV = verts.size();
+    Array<WavefrontObjFileWithVertexColors::Vertex>& normals = mesh->shapes[0]->mesh.normals;
+    int numN = verts.size();
+    Array<WavefrontObjFileWithVertexColors::TextureCoord>& textureCoords = mesh->shapes[0]->mesh.textureCoords;
+    int numUV = verts.size();
+    Array<WavefrontObjFileWithVertexColors::Index>& indicies = mesh->shapes[0]->mesh.indices;
+    int numI = verts.size();
+    
+    //add vertexes
+    lMesh->InitControlPoints(numV);
+    FbxVector4* controlPoints = lMesh->GetControlPoints();
+    for (int i = 0; i < numV; i++) {
+        controlPoints[i] = FbxVector4(verts[i].x, verts[i].y, verts[i].z, 1.0f);
+    }
+    
+    //normals
+    FbxLayer *lLayer = lMesh->GetLayer(0);
+    if(lLayer == NULL) {
+        lMesh->CreateLayer();
+        lLayer = lMesh->GetLayer(0);
+    }
+    FbxLayerElementNormal* lLayerElementNormal= FbxLayerElementNormal::Create(lMesh, "");
+    lLayerElementNormal->SetMappingMode(FbxLayerElement::eByControlPoint);
+    lLayerElementNormal->SetReferenceMode(FbxLayerElement::eDirect);
+    for (int i = 0; i < numN; i++) {
+        lLayerElementNormal->GetDirectArray().Add(FbxVector4(normals[i].x, normals[i].y, normals[i].z, 1.0f));
+    }
+    lLayer->SetNormals(lLayerElementNormal);
+    
+    //texture
+    FbxLayerElementUV *uvDiffuseLayerElement = FbxLayerElementUV::Create( lMesh, "diffuseUV");
+    uvDiffuseLayerElement->SetMappingMode( FbxLayerElement::eByControlPoint );
+    uvDiffuseLayerElement->SetReferenceMode( FbxLayerElement::eDirect );
+    lMesh->InitTextureUV(numUV);
+    for (int i = 0; i < numUV; i++) {
+        lMesh->AddTextureUV(FbxVector2(textureCoords[i].x, textureCoords[i].y));
+        uvDiffuseLayerElement->GetDirectArray().Add(FbxVector2(textureCoords[i].x, textureCoords[i].y));
+    }
+    lLayer->SetUVs( uvDiffuseLayerElement, FbxLayerElement::eTextureDiffuse );
+
+    
+    lNode->SetShadingMode(FbxNode::eTextureShading);
+    
+    //indices/polygons
+    for (int i = 0; i < indicies.size(); i+=3) {
+        lMesh->BeginPolygon();
+        lMesh->AddPolygon(indicies[i]);
+        lMesh->AddPolygon(indicies[i+1]);
+        lMesh->AddPolygon(indicies[i+2]);
+        lMesh->EndPolygon();
+    }
+    
+    //****************
     //export
     File fbxOutFile = obj.getSiblingFile(name + ".fbx");
+    if (fbxOutFile.existsAsFile()) {
+        fbxOutFile.deleteFile();
+    }
     
     FbxIOSettings * ios = FbxIOSettings::Create(fbxManager, IOSROOT );
+    ios->SetBoolProp(EXP_FBX_EMBEDDED, true);
+    
     fbxManager->SetIOSettings(ios);
     
     FbxExporter* lExporter = FbxExporter::Create(fbxManager, "");
@@ -119,4 +186,54 @@ bool Model::rig()
     }
     
     return true;
+}
+
+void Model::CreateTexture(FbxScene* pScene, FbxMesh* pMesh)
+{
+    FbxSurfacePhong* lMaterial = NULL;
+    
+    FbxNode* lNode = pMesh->GetNode();
+    if(lNode)
+    {
+        lMaterial = lNode->GetSrcObject<FbxSurfacePhong>(0);
+        if (lMaterial == NULL)
+        {
+            FbxString lMaterialName = "toto";
+            FbxString lShadingName  = "Phong";
+            FbxDouble3 lBlack(0.0, 0.0, 0.0);
+            FbxDouble3 lWhite(1.0, 1.0, 1.0);
+            lMaterial = FbxSurfacePhong::Create(pScene, lMaterialName.Buffer());
+            
+            // Generate primary and secondary colors.
+            lMaterial->Emissive           .Set(lBlack);
+            lMaterial->Ambient            .Set(lWhite);
+            lMaterial->AmbientFactor      .Set(1.);
+            // Add texture for diffuse channel
+            lMaterial->Diffuse           .Set(lWhite);
+            lMaterial->DiffuseFactor     .Set(1.);
+            lMaterial->TransparencyFactor.Set(0.4);
+            lMaterial->ShadingModel      .Set(lShadingName);
+            lMaterial->Shininess         .Set(0.5);
+            lMaterial->Specular          .Set(lBlack);
+            lMaterial->SpecularFactor    .Set(0.3);
+            
+            lNode->AddMaterial(lMaterial);
+        }
+    }
+    
+    FbxFileTexture* lTexture = FbxFileTexture::Create(pScene,"Diffuse Texture");
+    
+    // Set texture properties.
+    lTexture->SetFileName(jpg.getFullPathName().toRawUTF8()); // Resource file is in current directory.
+    lTexture->SetTextureUse(FbxTexture::eStandard);
+    lTexture->SetMappingType(FbxTexture::eUV);
+    lTexture->SetMaterialUse(FbxFileTexture::eModelMaterial);
+    lTexture->SetSwapUV(false);
+    lTexture->SetTranslation(0.0, 0.0);
+    lTexture->SetScale(1.0, 1.0);
+    lTexture->SetRotation(0.0, 0.0);
+    
+    
+    if (lMaterial)
+        lMaterial->Diffuse.ConnectSrcObject(lTexture);
 }

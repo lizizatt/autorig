@@ -42,6 +42,7 @@ private:
     TextButton loadOBJ;
     TextButton rig;
     TextButton openFolder;
+    TextButton genFbx;
     Label outputLabel;
     AutoRig *autoRig;
     

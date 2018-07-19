@@ -54,6 +54,13 @@ void AutoRig::StartRig()
     }
 }
 
+void AutoRig::GenFBX()
+{
+    if (activeModel != nullptr) {
+        genFbx = true;
+    }
+}
+
 void AutoRig::run()
 {
     fbxManager = FbxManager::Create();
@@ -77,6 +84,10 @@ void AutoRig::run()
             for (int i = 0; i < listeners.size(); i++) {
                 listeners[i]->RigDone();
             }
+        }
+        if (genFbx) {
+            genFbx = false;
+            activeModel->genFBX();
         }
         sleep(10);
     }
