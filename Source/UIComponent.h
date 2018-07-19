@@ -26,6 +26,7 @@ public:
     void paint (Graphics&);
     void resized();
 
+    void buttonHelper(Button &b);
     void buttonClicked(Button *b) override;
     
     virtual void ModelsUpdated() override;
@@ -40,6 +41,7 @@ private:
     TextButton loadExisting;
     TextButton loadOBJ;
     TextButton rig;
+    TextButton openFolder;
     Label outputLabel;
     AutoRig *autoRig;
     

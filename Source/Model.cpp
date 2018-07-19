@@ -57,9 +57,11 @@ Model::Model(File m)
 
 bool Model::load()
 {
-    mesh = new Mesh(obj_poisson.getFullPathName().toRawUTF8());
+    mesh_poisson = new Mesh(obj_poisson.getFullPathName().toRawUTF8());
+    mesh = new WavefrontObjFileWithVertexColors();
+    mesh->load(obj);
     skeleton = new HumanSkeleton();
-    return mesh->vertices.size() > 0;
+    return mesh->shapes.size() > 0 && mesh_poisson->vertices.size() > 0;
 }
 
 
@@ -86,15 +88,35 @@ bool Model::rig()
         return true;
     }
     
-    //pout is for the poisson mesh
-    PinocchioOutput pout = autorig(*skeleton, *mesh);
+    //poisson mesh pinocchio output
+    PinocchioOutput pout = autorig(*skeleton, *mesh_poisson);
     
+    //make fbx file
     FbxScene* lScene = FbxScene::Create(fbxManager, "AutorigOutput");
-    
     FbxNode* lNode = FbxNode::Create(lScene, "node");
     FbxMesh* lMesh = FbxMesh::Create(lScene, "mesh");
     
+    //export
+    File fbxOutFile = obj.getSiblingFile(name + ".fbx");
     
+    FbxIOSettings * ios = FbxIOSettings::Create(fbxManager, IOSROOT );
+    fbxManager->SetIOSettings(ios);
+    
+    FbxExporter* lExporter = FbxExporter::Create(fbxManager, "");
+    
+    bool res = lExporter->Initialize(fbxOutFile.getFullPathName().toRawUTF8(), -1, fbxManager->GetIOSettings());
+    if (!res) {
+        cout << "Failed to initialize exporter for " + name + "\n";
+    }
+    else {
+        res = lExporter->Export(lScene);
+        if (res) {
+            cout << "Successfully exported " + name + ".fbx";
+        }
+        else {
+            cout << "Failed to export " + name + ".fbx";
+        }
+    }
     
     return true;
 }

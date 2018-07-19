@@ -23,6 +23,7 @@ UIComponent::UIComponent()
     addAndMakeVisible(loadExisting);
     addAndMakeVisible(models);
     addAndMakeVisible(rig);
+    addAndMakeVisible(openFolder);
     
     loadOBJ.setButtonText("Load File");
     loadOBJ.addListener(this);
@@ -30,25 +31,27 @@ UIComponent::UIComponent()
     loadExisting.addListener(this);
     rig.setButtonText("Rig");
     rig.addListener(this);
+    openFolder.setButtonText("Open Folder");
+    openFolder.addListener(this);
     
-    loadOBJ.setColour(TextButton::ColourIds::buttonColourId, Colours::darkgrey);
-    loadOBJ.setColour(TextButton::ColourIds::buttonOnColourId, Colours::grey);
-    loadOBJ.setColour(TextButton::ColourIds::textColourOffId, Colours::whitesmoke);
-    loadOBJ.setColour(TextButton::ColourIds::textColourOnId, Colours::whitesmoke);
-    loadExisting.setColour(TextButton::ColourIds::buttonColourId, Colours::darkgrey);
-    loadExisting.setColour(TextButton::ColourIds::buttonOnColourId, Colours::grey);
-    loadExisting.setColour(TextButton::ColourIds::textColourOffId, Colours::whitesmoke);
-    loadExisting.setColour(TextButton::ColourIds::textColourOnId, Colours::whitesmoke);
-    rig.setColour(TextButton::ColourIds::buttonColourId, Colours::darkgrey);
-    rig.setColour(TextButton::ColourIds::buttonOnColourId, Colours::grey);
-    rig.setColour(TextButton::ColourIds::textColourOffId, Colours::whitesmoke);
-    rig.setColour(TextButton::ColourIds::textColourOnId, Colours::whitesmoke);
+    buttonHelper(loadOBJ);
+    buttonHelper(loadExisting);
+    buttonHelper(rig);
+    buttonHelper(openFolder);
     
     background = ImageCache::getFromMemory(BinaryData::Hackathon_18_FINAL_jpg, BinaryData::Hackathon_18_FINAL_jpgSize);
     
     takeKeyboardFocus(Component::FocusChangeType::focusChangedDirectly);
     
     ModelsUpdated();
+}
+
+void UIComponent::buttonHelper(Button &b)
+{
+    b.setColour(TextButton::ColourIds::buttonColourId, Colours::darkgrey);
+    b.setColour(TextButton::ColourIds::buttonOnColourId, Colours::grey);
+    b.setColour(TextButton::ColourIds::textColourOffId, Colours::whitesmoke);
+    b.setColour(TextButton::ColourIds::textColourOnId, Colours::whitesmoke);
 }
 
 UIComponent::~UIComponent()
@@ -68,6 +71,7 @@ void UIComponent::resized()
     outputLabel.setBounds(20, getHeight() - 40, getWidth() - 40, 20);
     
     rig.setBounds(20, 200, getWidth() - 40, 30);
+    openFolder.setBounds(loadExisting.getX(), rig.getBottom() + 5, getWidth() / 2 - 40, 20);
 }
 
 void UIComponent::buttonClicked(Button *b)
@@ -102,6 +106,10 @@ void UIComponent::buttonClicked(Button *b)
         outputLabel.setText("Rig running...", dontSendNotification);
         outputLabel.setColour(Label::ColourIds::textColourId, Colours::purple);
         autoRig->StartRig();
+    }
+    
+    if (b == &openFolder && autoRig->activeModel != nullptr) {
+        autoRig->activeModel->obj.revealToUser();
     }
 }
 

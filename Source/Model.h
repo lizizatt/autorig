@@ -15,6 +15,7 @@
 #include "../Pinocchio/mesh.h"
 #include "../Pinocchio/pinocchioApi.h"
 #include <fbxsdk.h>
+#include "WavefrontObjParser.h"
 
 class Model
 {
@@ -29,7 +30,8 @@ public:
     File obj_poisson;
     File mtl;
     File jpg;
-    ScopedPointer<Mesh> mesh;
+    ScopedPointer<WavefrontObjFileWithVertexColors> mesh;
+    ScopedPointer<Mesh> mesh_poisson;
     ScopedPointer<Skeleton> skeleton;
     String name;
     bool rigged = false;

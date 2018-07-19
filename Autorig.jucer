@@ -431,6 +431,9 @@
       <FILE id="Gk8oSV" name="vecutils.h" compile="0" resource="0" file="Pinocchio/vecutils.h"/>
     </GROUP>
     <GROUP id="{D4292D6E-AD46-1A18-0CC2-B291C4FAB6E1}" name="Source">
+      <FILE id="JEQRxO" name="Util.h" compile="0" resource="0" file="Source/Util.h"/>
+      <FILE id="mlh9Z0" name="WavefrontObjParser.h" compile="0" resource="0"
+            file="Source/WavefrontObjParser.h"/>
       <GROUP id="{5072DCAC-66F6-9DAC-0E4A-387A7CFA72AA}" name="Autorig">
         <FILE id="jrvYu2" name="Model.cpp" compile="1" resource="0" file="Source/Model.cpp"/>
         <FILE id="goxdfd" name="Model.h" compile="0" resource="0" file="Source/Model.h"/>
