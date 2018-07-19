@@ -10,7 +10,6 @@
 #define MAINCOMPONENT_H_INCLUDED
 
 #include "../JuceLibraryCode/JuceHeader.h"
-#include "GraphicsComponent.h"
 #include "UIComponent.h"
 
 //==============================================================================
@@ -21,7 +20,6 @@
 class MainContentComponent   : public Component
 {
 public:
-    ScopedPointer<GraphicsComponent> graphicsComponent;
     ScopedPointer<UIComponent> uiComponent;
     
     OpenGLContext context;
@@ -32,7 +30,7 @@ public:
     {
         //addAndMakeVisible(graphicsComponent = new GraphicsComponent());
         addAndMakeVisible(uiComponent = new UIComponent());
-        setSize (600, 400);
+        setSize (600, 300);
     }
 
     void paint (Graphics& g) override

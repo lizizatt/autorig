@@ -18,21 +18,33 @@ UIComponent::UIComponent()
     autoRig = AutoRigApplication::getAutoRig();
     autoRig->AddListener(this);
     
-    addAndMakeVisible(autoRigLabel);
     addAndMakeVisible(loadOBJ);
     addAndMakeVisible(outputLabel);
     addAndMakeVisible(loadExisting);
     addAndMakeVisible(models);
     addAndMakeVisible(rig);
     
-    autoRigLabel.setText("AutoRig", dontSendNotification);
-    autoRigLabel.setJustificationType(Justification::centred);
-    loadOBJ.setButtonText("Start");
+    loadOBJ.setButtonText("Load File");
     loadOBJ.addListener(this);
     loadExisting.setButtonText("Load Existing");
     loadExisting.addListener(this);
     rig.setButtonText("Rig");
     rig.addListener(this);
+    
+    loadOBJ.setColour(TextButton::ColourIds::buttonColourId, Colours::darkgrey);
+    loadOBJ.setColour(TextButton::ColourIds::buttonOnColourId, Colours::grey);
+    loadOBJ.setColour(TextButton::ColourIds::textColourOffId, Colours::whitesmoke);
+    loadOBJ.setColour(TextButton::ColourIds::textColourOnId, Colours::whitesmoke);
+    loadExisting.setColour(TextButton::ColourIds::buttonColourId, Colours::darkgrey);
+    loadExisting.setColour(TextButton::ColourIds::buttonOnColourId, Colours::grey);
+    loadExisting.setColour(TextButton::ColourIds::textColourOffId, Colours::whitesmoke);
+    loadExisting.setColour(TextButton::ColourIds::textColourOnId, Colours::whitesmoke);
+    rig.setColour(TextButton::ColourIds::buttonColourId, Colours::darkgrey);
+    rig.setColour(TextButton::ColourIds::buttonOnColourId, Colours::grey);
+    rig.setColour(TextButton::ColourIds::textColourOffId, Colours::whitesmoke);
+    rig.setColour(TextButton::ColourIds::textColourOnId, Colours::whitesmoke);
+    
+    background = ImageCache::getFromMemory(BinaryData::Hackathon_18_FINAL_jpg, BinaryData::Hackathon_18_FINAL_jpgSize);
     
     takeKeyboardFocus(Component::FocusChangeType::focusChangedDirectly);
     
@@ -45,13 +57,13 @@ UIComponent::~UIComponent()
 
 void UIComponent::paint (Graphics& g)
 {
+    g.drawImage(background, 0, 0, getWidth(), getHeight(), 0, 0, background.getWidth(), background.getHeight());
 }
 
 void UIComponent::resized()
 {
-    autoRigLabel.setBounds(0, 0, getWidth(), 30);
-    loadOBJ.setBounds(20, 100, 100, 20);
-    loadExisting.setBounds(loadOBJ.getRight(), 100, 100, 20);
+    loadOBJ.setBounds(20, 20, getWidth() / 2 - 40, 30);
+    loadExisting.setBounds(loadOBJ.getRight() + 20, 20, getWidth() / 2 - 40, 20);
     models.setBounds(loadExisting.getX(), loadExisting.getBottom(), loadExisting.getWidth(), loadExisting.getHeight());
     outputLabel.setBounds(20, getHeight() - 40, getWidth() - 40, 20);
     

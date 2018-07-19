@@ -383,6 +383,8 @@
       <FILE id="u2HzxO" name="fbxsdk.h" compile="0" resource="0" file="FBXSDK/include/fbxsdk.h"/>
     </GROUP>
     <GROUP id="{A033381A-9864-7A2A-0B20-AA5FD37A673A}" name="Resources">
+      <FILE id="e8J7bH" name="Hackathon_18_FINAL.jpg" compile="0" resource="1"
+            file="Resources/Hackathon_18_FINAL.jpg"/>
       <FILE id="maIiRP" name="clean.mlx" compile="0" resource="1" file="Resources/clean.mlx"/>
       <FILE id="mizePL" name="fragmentshader" compile="0" resource="1" file="Resources/fragmentshader"/>
       <FILE id="frXrE4" name="vertexshader" compile="0" resource="1" file="Resources/vertexshader"/>
@@ -439,10 +441,6 @@
         <FILE id="hqq0cb" name="AutoRig.cpp" compile="1" resource="0" file="Source/AutoRig.cpp"/>
         <FILE id="cI44kS" name="AutoRig.h" compile="0" resource="0" file="Source/AutoRig.h"/>
       </GROUP>
-      <FILE id="rkwH1M" name="GraphicsComponent.cpp" compile="1" resource="0"
-            file="Source/GraphicsComponent.cpp"/>
-      <FILE id="WEQZwp" name="GraphicsComponent.h" compile="0" resource="0"
-            file="Source/GraphicsComponent.h"/>
       <FILE id="KQQAZJ" name="UIComponent.cpp" compile="1" resource="0" file="Source/UIComponent.cpp"/>
       <FILE id="NLPZkM" name="UIComponent.h" compile="0" resource="0" file="Source/UIComponent.h"/>
       <FILE id="AjsqsF" name="MainComponent.cpp" compile="1" resource="0"

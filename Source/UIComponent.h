@@ -36,13 +36,14 @@ public:
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (UIComponent)
     
-    Label autoRigLabel;
     ComboBox models;
     TextButton loadExisting;
     TextButton loadOBJ;
     TextButton rig;
     Label outputLabel;
     AutoRig *autoRig;
+    
+    Image background;
 };
 
 

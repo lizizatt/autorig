@@ -11,7 +11,6 @@
 		029EE34A4569080AC3635E40 /* RecentFilesMenuTemplate.nib in Resources */ = {isa = PBXBuildFile; fileRef = EE5FD4D2CAB4128E9169482B /* RecentFilesMenuTemplate.nib */; };
 		050C1AF33E317FF0A7BCF514 /* graphutils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6F0407E4038FFFA92BE8D11D /* graphutils.cpp */; };
 		0C62985CB8B41C5689A61362 /* juce_cryptography.mm in Sources */ = {isa = PBXBuildFile; fileRef = AC4596C0406F4EEF832B51C3 /* juce_cryptography.mm */; };
-		0F3D5D84039503A708626A8A /* GraphicsComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 872E64F2DCA4B76C908B2263 /* GraphicsComponent.cpp */; };
 		11F4396E049F772B9395EA82 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E563CA16EA26A85B3E510EE /* Accelerate.framework */; };
 		14102DF9C81F1A9777BE9A30 /* DiscRecording.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8768A88841B3A666322387C /* DiscRecording.framework */; };
 		154A3FB94C1875BC2AFCCBF2 /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 00A9C0791F959BE202384F77 /* Main.cpp */; };
@@ -688,7 +687,6 @@
 		871E1056C61E91519C921976 /* juce_FileFilter.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_FileFilter.cpp; path = ../../../trinity_dev/external/JUCE/modules/juce_core/files/juce_FileFilter.cpp; sourceTree = SOURCE_ROOT; };
 		872333BA56EFD0142AA434D1 /* fbxobjectscontainer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fbxobjectscontainer.h; path = ../../FBXSDK/include/fbxsdk/scene/fbxobjectscontainer.h; sourceTree = SOURCE_ROOT; };
 		8725817FE4F385F62775E846 /* fbxentryview.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fbxentryview.h; path = ../../FBXSDK/include/fbxsdk/scene/shading/fbxentryview.h; sourceTree = SOURCE_ROOT; };
-		872E64F2DCA4B76C908B2263 /* GraphicsComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = GraphicsComponent.cpp; path = ../../Source/GraphicsComponent.cpp; sourceTree = SOURCE_ROOT; };
 		873BEE0DCDCF78FEE67EB8AD /* juce_FileListComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_FileListComponent.cpp; path = ../../../trinity_dev/external/JUCE/modules/juce_gui_basics/filebrowser/juce_FileListComponent.cpp; sourceTree = SOURCE_ROOT; };
 		87604D9FF471C9798B4056F1 /* juce_mac_Fonts.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = juce_mac_Fonts.mm; path = ../../../trinity_dev/external/JUCE/modules/juce_graphics/native/juce_mac_Fonts.mm; sourceTree = SOURCE_ROOT; };
 		8764A6A4780A8103EAEBCA7A /* juce_BubbleMessageComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_BubbleMessageComponent.h; path = ../../../trinity_dev/external/JUCE/modules/juce_gui_extra/misc/juce_BubbleMessageComponent.h; sourceTree = SOURCE_ROOT; };
@@ -1010,6 +1008,7 @@
 		CD76E572AB4278CED3AFB0EE /* juce_DynamicObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_DynamicObject.h; path = ../../../trinity_dev/external/JUCE/modules/juce_core/containers/juce_DynamicObject.h; sourceTree = SOURCE_ROOT; };
 		CF1BCC9AAC56C2A8A221340C /* fbxdocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fbxdocument.h; path = ../../FBXSDK/include/fbxsdk/scene/fbxdocument.h; sourceTree = SOURCE_ROOT; };
 		CF566BEFD81C236E807FFFB7 /* fbxrenamingstrategy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fbxrenamingstrategy.h; path = ../../FBXSDK/include/fbxsdk/utils/fbxrenamingstrategy.h; sourceTree = SOURCE_ROOT; };
+		CFE26567ED70F82B9312E89E /* Hackathon_18_FINAL.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Hackathon_18_FINAL.jpg; path = ../../Resources/Hackathon_18_FINAL.jpg; sourceTree = SOURCE_ROOT; };
 		D028281EDF42A7F5B0DDB1D3 /* juce_FlacAudioFormat.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_FlacAudioFormat.cpp; path = ../../../trinity_dev/external/JUCE/modules/juce_audio_formats/codecs/juce_FlacAudioFormat.cpp; sourceTree = SOURCE_ROOT; };
 		D096FBDEF6556CD11F0D7D78 /* fbxrootnodeutility.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fbxrootnodeutility.h; path = ../../FBXSDK/include/fbxsdk/utils/fbxrootnodeutility.h; sourceTree = SOURCE_ROOT; };
 		D0A6C93C438EA9D620469A74 /* juce_OpenGLImage.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_OpenGLImage.cpp; path = ../../../trinity_dev/external/JUCE/modules/juce_opengl/opengl/juce_OpenGLImage.cpp; sourceTree = SOURCE_ROOT; };
@@ -1021,7 +1020,6 @@
 		D164371D57935249B6E7DE3A /* juce_DropShadowEffect.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = juce_DropShadowEffect.cpp; path = ../../../trinity_dev/external/JUCE/modules/juce_graphics/effects/juce_DropShadowEffect.cpp; sourceTree = SOURCE_ROOT; };
 		D16DA2F2F65D6E039CF7CDF8 /* juce_ToggleButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_ToggleButton.h; path = ../../../trinity_dev/external/JUCE/modules/juce_gui_basics/buttons/juce_ToggleButton.h; sourceTree = SOURCE_ROOT; };
 		D183570FB35E12515BEC088A /* fbxconstraintaim.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fbxconstraintaim.h; path = ../../FBXSDK/include/fbxsdk/scene/constraint/fbxconstraintaim.h; sourceTree = SOURCE_ROOT; };
-		D23770D5022D487F922E347C /* GraphicsComponent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GraphicsComponent.h; path = ../../Source/GraphicsComponent.h; sourceTree = SOURCE_ROOT; };
 		D264F6A1FF29B6A899DFBC4A /* juce_AudioFormatManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_AudioFormatManager.h; path = ../../../trinity_dev/external/JUCE/modules/juce_audio_formats/format/juce_AudioFormatManager.h; sourceTree = SOURCE_ROOT; };
 		D26EF87CFCC5C5ABB8D531A1 /* juce_Singleton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = juce_Singleton.h; path = ../../../trinity_dev/external/JUCE/modules/juce_core/memory/juce_Singleton.h; sourceTree = SOURCE_ROOT; };
 		D279E5B39B47455E8388887D /* fbxshape.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = fbxshape.h; path = ../../FBXSDK/include/fbxsdk/scene/geometry/fbxshape.h; sourceTree = SOURCE_ROOT; };
@@ -1922,6 +1920,7 @@
 		56446A5E8DD2D881AD28931B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CFE26567ED70F82B9312E89E /* Hackathon_18_FINAL.jpg */,
 				4DA75B790F229E4CECFEAD0B /* clean.mlx */,
 				313833E89C135A286427C37F /* fragmentshader */,
 				87C42EEBAA6A29026438F1C9 /* vertexshader */,
@@ -3250,8 +3249,6 @@
 				EC2872F406DE67679FFA5CAF /* Util.h */,
 				4966657793908144515AE5F2 /* WavefrontObjParser.h */,
 				93BE31EB69920E6AB175623D /* Autorig */,
-				872E64F2DCA4B76C908B2263 /* GraphicsComponent.cpp */,
-				D23770D5022D487F922E347C /* GraphicsComponent.h */,
 				283403C7DAFD06FFCF8540F4 /* UIComponent.cpp */,
 				5824009879DAA62C3E3F5861 /* UIComponent.h */,
 				2FDC078A18BF6AC6B519BC15 /* MainComponent.cpp */,
@@ -3490,7 +3487,6 @@
 				60BDB0FB0B2070D06FFA9F7E /* skeleton.cpp in Sources */,
 				C92A587671F49AEFDEAA3439 /* Model.cpp in Sources */,
 				B059CAEF03211B016A550577 /* AutoRig.cpp in Sources */,
-				0F3D5D84039503A708626A8A /* GraphicsComponent.cpp in Sources */,
 				32C93F450048530DB9BF282F /* UIComponent.cpp in Sources */,
 				510BE8A428FA8320D7D645DA /* MainComponent.cpp in Sources */,
 				154A3FB94C1875BC2AFCCBF2 /* Main.cpp in Sources */,
