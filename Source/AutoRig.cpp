@@ -56,6 +56,8 @@ void AutoRig::StartRig()
 
 void AutoRig::run()
 {
+    fbxManager = FbxManager::Create();
+    
     Array<File> files;
     File(Model::modelDirectory).findChildFiles(files, File::findDirectories, false);
     for (int i = 0; i < files.size(); i++) {

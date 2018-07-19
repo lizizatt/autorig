@@ -14,6 +14,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "../Pinocchio/mesh.h"
 #include "../Pinocchio/pinocchioApi.h"
+#include <fbxsdk.h>
 
 class Model
 {
@@ -24,13 +25,16 @@ public:
 public:
     File directory;
     File obj;
+    File obj_cleaned;
+    File obj_poisson;
     File mtl;
     File jpg;
     ScopedPointer<Mesh> mesh;
     ScopedPointer<Skeleton> skeleton;
-    int meshLabCleanTally = 0;
     String name;
     bool rigged = false;
+    
+    FbxManager *fbxManager;
     
     Model (File m);
     bool load();

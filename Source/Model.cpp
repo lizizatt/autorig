@@ -9,6 +9,7 @@
 */
 
 #include "Model.h"
+#include "Main.h"
 
 const String Model::modelDirectory = "~/AutoRig/Models/";
 
@@ -18,6 +19,8 @@ Model::Model(File m)
         return;
     }
     
+    fbxManager = AutoRigApplication::getAutoRig()->fbxManager;
+    
     name = m.getFileNameWithoutExtension();
     directory = File(modelDirectory + name);
     if (!File(directory).exists()) {
@@ -25,10 +28,12 @@ Model::Model(File m)
     }
     
     obj = directory.getChildFile(m.getFileName());
+    obj_poisson = directory.getChildFile(m.getFileNameWithoutExtension() + "_poisson" + m.getFileExtension());
+    obj_cleaned = directory.getChildFile(m.getFileNameWithoutExtension() + "_cleaned" + m.getFileExtension());
     mtl = directory.getChildFile(name + ".mtl");
     jpg = directory.getChildFile(name + ".jpg");
     
-    if (m.getFullPathName() != obj.getFullPathName()) {
+    if (!obj_poisson.existsAsFile()) {
         m.copyFileTo(obj);
         File mtlOrig = m.getSiblingFile(mtl.getFileName());
         mtlOrig.copyFileTo(mtl);
@@ -52,7 +57,7 @@ Model::Model(File m)
 
 bool Model::load()
 {
-    mesh = new Mesh(obj.getFullPathName().toRawUTF8());
+    mesh = new Mesh(obj_poisson.getFullPathName().toRawUTF8());
     skeleton = new HumanSkeleton();
     return mesh->vertices.size() > 0;
 }
@@ -61,12 +66,18 @@ bool Model::load()
 bool Model::runMeshlab()
 {
     File filterScript = File::getSpecialLocation(File::currentApplicationFile).getChildFile("contents").getChildFile("Resources").getChildFile("poissonreconstruct.mlx");
-    String meshlabCommand = MESHLABSERVER_PATH + " -i " + obj.getFullPathName() + " -o " + obj.getFullPathName() + " -s " + filterScript.getFullPathName();
+    String meshlabCommand = MESHLABSERVER_PATH + " -i " + obj.getFullPathName() + " -o " + obj_poisson.getFullPathName() + " -s " + filterScript.getFullPathName();
     
-    int ret = system(meshlabCommand.toRawUTF8());
-    cout << "Ran meshlab cleanup with return value " << ret << "\n";
+    int ret1 = system(meshlabCommand.toRawUTF8());
+    cout << "Ran meshlab poisson generation with return value " << ret1 << "\n";
     
-    return ret == 0;
+    filterScript = File::getSpecialLocation(File::currentApplicationFile).getChildFile("contents").getChildFile("Resources").getChildFile("clean.mlx");
+    meshlabCommand = MESHLABSERVER_PATH + " -i " + obj.getFullPathName() + " -o " + obj_cleaned.getFullPathName() + " -s " + filterScript.getFullPathName();
+    
+    int ret2 = system(meshlabCommand.toRawUTF8());
+    cout << "Ran meshlab clean with return value " << ret2 << "\n";
+    
+    return ret1 == 0 && ret2 == 0;
 }
 
 bool Model::rig()
@@ -75,6 +86,15 @@ bool Model::rig()
         return true;
     }
     
-    autorig(*skeleton, *mesh);
+    //pout is for the poisson mesh
+    PinocchioOutput pout = autorig(*skeleton, *mesh);
+    
+    FbxScene* lScene = FbxScene::Create(fbxManager, "AutorigOutput");
+    
+    FbxNode* lNode = FbxNode::Create(lScene, "node");
+    FbxMesh* lMesh = FbxMesh::Create(lScene, "mesh");
+    
+    
+    
     return true;
 }

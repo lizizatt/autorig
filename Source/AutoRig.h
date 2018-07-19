@@ -30,6 +30,8 @@ public:
     
     Model* activeModel = nullptr;
     
+    FbxManager* fbxManager;
+    
 public:
     AutoRig();
     ~AutoRig();
