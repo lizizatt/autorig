@@ -4,6 +4,17 @@
               bundleIdentifier="com.yourcompany.NewProject" includeBinaryInAppConfig="1"
               jucerVersion="3.1.1">
   <MAINGROUP id="oOJRTR" name="AutoRig">
+    <GROUP id="{B0917276-D0CA-6393-4B2D-2662A40E541B}" name="DemoUI">
+      <FILE id="MFLYZ3" name="MyWindow.cpp" compile="1" resource="0" file="DemoUI/MyWindow.cpp"/>
+      <FILE id="kyotiY" name="MyWindow.h" compile="0" resource="0" file="DemoUI/MyWindow.h"/>
+      <FILE id="GhZnvJ" name="defmesh.cpp" compile="1" resource="0" file="DemoUI/defmesh.cpp"/>
+      <FILE id="gERb5m" name="defmesh.h" compile="0" resource="0" file="DemoUI/defmesh.h"/>
+      <FILE id="mXs6BE" name="DisplayMesh.h" compile="0" resource="0" file="DemoUI/DisplayMesh.h"/>
+      <FILE id="kEHeAw" name="filter.cpp" compile="1" resource="0" file="DemoUI/filter.cpp"/>
+      <FILE id="lizjGO" name="filter.h" compile="0" resource="0" file="DemoUI/filter.h"/>
+      <FILE id="WpH8Kn" name="motion.cpp" compile="1" resource="0" file="DemoUI/motion.cpp"/>
+      <FILE id="PL8Bns" name="motion.h" compile="0" resource="0" file="DemoUI/motion.h"/>
+    </GROUP>
     <GROUP id="{5886E35D-9072-45E7-9F13-9A1EB3ADC7D2}" name="include">
       <GROUP id="{BF426B4D-9EAF-9FE4-F386-E0DABF01F67A}" name="fbxsdk">
         <GROUP id="{7EF2671B-CF0C-C9C0-042F-726C2B832AC3}" name="core">
@@ -385,11 +396,18 @@
     <GROUP id="{A033381A-9864-7A2A-0B20-AA5FD37A673A}" name="Resources">
       <FILE id="e8J7bH" name="Hackathon_18_FINAL.jpg" compile="0" resource="1"
             file="Resources/Hackathon_18_FINAL.jpg"/>
+      <FILE id="iU0xYu" name="crossWalk.txt" compile="0" resource="1" file="Resources/crossWalk.txt"/>
       <FILE id="maIiRP" name="clean.mlx" compile="0" resource="0" file="Resources/clean.mlx"/>
       <FILE id="mizePL" name="fragmentshader" compile="0" resource="1" file="Resources/fragmentshader"/>
+      <FILE id="EXMTby" name="jumpAround.txt" compile="0" resource="1" file="Resources/jumpAround.txt"/>
       <FILE id="frXrE4" name="vertexshader" compile="0" resource="1" file="Resources/vertexshader"/>
+      <FILE id="gQrEwG" name="runAround.txt" compile="0" resource="1" file="Resources/runAround.txt"/>
       <FILE id="isRO9v" name="poissonreconstruct.mlx" compile="0" resource="0"
             file="Resources/poissonreconstruct.mlx"/>
+      <FILE id="ntGaTH" name="wakeUpSequence2.txt" compile="0" resource="1"
+            file="Resources/wakeUpSequence2.txt"/>
+      <FILE id="gPM9mn" name="walk.txt" compile="0" resource="1" file="Resources/walk.txt"/>
+      <FILE id="fgaw3k" name="walkAndSkip.txt" compile="0" resource="1" file="Resources/walkAndSkip.txt"/>
     </GROUP>
     <GROUP id="{A7BF955B-4863-9FF7-C55A-0DC7A2B9B960}" name="Pinocchio">
       <FILE id="HVNwot" name="attachment.cpp" compile="1" resource="0" file="Pinocchio/attachment.cpp"/>

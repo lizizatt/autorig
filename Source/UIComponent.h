@@ -13,6 +13,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "AutoRig.h"
+#include "../DemoUI/MyWindow.h"
+#include "../DemoUI/defmesh.h"
 
 //==============================================================================
 /*
@@ -47,6 +49,10 @@ private:
     AutoRig *autoRig;
     
     Image background;
+    
+    ScopedPointer<Window> glWindow;
+    ScopedPointer<MyWindow> glComp;
+    StaticDisplayMesh *m;
 };
 
 

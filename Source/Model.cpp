@@ -94,7 +94,7 @@ bool Model::rig()
     pOut = autorig(*skeleton, *mesh_poisson);
     //****************
   
-    return genFBX();
+    return pOut.attachment != nullptr;
 }
 
 bool Model::genFBX()
@@ -288,8 +288,7 @@ FbxNode* Model::AddSkeletonHelper(int index, FbxScene* pScene, const char* pName
     
     FbxNode* node = FbxNode::Create(pScene,joint.Buffer());
     node->SetNodeAttribute(lJointAttribute);
-    node->LclTranslation.Set(FbxVectorTemplate3<double>(v[0] / mesh_poisson->scale - mesh_poisson->toAdd[0], v[1] / mesh_poisson->scale - mesh_poisson->toAdd[1], v[2] / mesh_poisson->scale - mesh_poisson->toAdd[2]));
-    
+    node->LclTranslation.Set(FbxVectorTemplate3<double>(embedding[index][0], embedding[index][1], embedding[index][2]));
     for (int j = 0; j < edges.size(); j++) {
         if (edges[j] > index) {
             node->AddChild(AddSkeletonHelper(edges[j], pScene, joint, lSkin));
@@ -317,41 +316,6 @@ FbxNode* Model::AddSkeletonHelper(int index, FbxScene* pScene, const char* pName
                 closest = j;
             }
         }
-        /*
-        
-        //walk edges from the closest vertex in the sampling until distance from self is minimized
-        int minInd = -1;
-        Array<int> seen;
-        vector<int> toExplore;
-        toExplore.push_back(closest);
-        
-        while(toExplore.size() > 0) {
-            closest = toExplore[0];
-            toExplore.pop_back();
-            seen.add(closest);
-            
-            vector<int> toCheck;
-            
-            int prevEdge = pEdges[pVerts[closest].edge].prev;
-            int curVert = pEdges[prevEdge].vertex;
-            int nextCCVert = pEdges[pEdges[pEdges[pEdges[pVerts[closest].edge].twin].prev].prev].vertex;
-            
-            
-            int ogVert = curVert;
-            while (nextCCVert != ogPrevVert) {
-                toCheck.push_back(nextCCVert);
-                prevVert = pEdges[prevEdge].vertex;
-                nextCCVert = pEdges[pEdges[pEdges[pEdges[pVerts[closest].edge].twin].prev].prev].vertex;
-            }
-            
-            for (int i = 0; i < toCheck.size(); i++) {
-                if (!seen.contains(toCheck[i]) && squaredDist(vert, pVerts[toCheck[i]].pos) < closestSquaredDist) {
-                    toExplore.push_back(toCheck[i]);
-                }
-                
-            }
-        }
-         */
         
         float vWeightForThisCluster = a->getWeights(closest)[index];
         cluster->AddControlPointIndex(i, vWeightForThisCluster);

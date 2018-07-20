@@ -26,6 +26,9 @@ UIComponent::UIComponent()
     addAndMakeVisible(openFolder);
     addAndMakeVisible(genFbx);
     
+    glComp = new MyWindow();
+    glWindow = new Window(glComp);
+    
     loadOBJ.setButtonText("Load File");
     loadOBJ.addListener(this);
     loadExisting.setButtonText("Load Existing");
@@ -135,6 +138,8 @@ void UIComponent::RigDone()
     MessageManagerLock lock;
     outputLabel.setText("Rig done.", dontSendNotification);
     outputLabel.setColour(Label::ColourIds::textColourId, Colours::green);
+    
+    glComp->addMesh(m = new StaticDisplayMesh(*autoRig->ActiveModel->mesh_poisson().get()));
 }
 
 void UIComponent::Post(bool error, String success, String fail) {
