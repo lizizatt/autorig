@@ -27,6 +27,7 @@ public:
     File directory;
     File obj;
     File obj_poisson;
+    File obj_cleaned;
     File mtl;
     File jpg;
     ScopedPointer<WavefrontObjFileWithVertexColors> mesh;
@@ -44,7 +45,9 @@ public:
     bool rig();
     bool genFBX();
     void CreateTexture(FbxScene* pScene, FbxMesh* pMesh);
-
+    FbxNode* CreateSkeleton(FbxScene* pScene, const char* pName, FbxMesh* lMesh);
+    FbxNode* AddSkeletonHelper(int index, FbxScene* pScene, const char* pName, FbxSkin* lSkin);
+    double squaredDist(WavefrontObjFileWithVertexColors::Vertex a, Vector3 b);
 };
 
 

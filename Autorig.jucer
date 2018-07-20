@@ -385,7 +385,7 @@
     <GROUP id="{A033381A-9864-7A2A-0B20-AA5FD37A673A}" name="Resources">
       <FILE id="e8J7bH" name="Hackathon_18_FINAL.jpg" compile="0" resource="1"
             file="Resources/Hackathon_18_FINAL.jpg"/>
-      <FILE id="maIiRP" name="clean.mlx" compile="0" resource="1" file="Resources/clean.mlx"/>
+      <FILE id="maIiRP" name="clean.mlx" compile="0" resource="0" file="Resources/clean.mlx"/>
       <FILE id="mizePL" name="fragmentshader" compile="0" resource="1" file="Resources/fragmentshader"/>
       <FILE id="frXrE4" name="vertexshader" compile="0" resource="1" file="Resources/vertexshader"/>
       <FILE id="isRO9v" name="poissonreconstruct.mlx" compile="0" resource="0"

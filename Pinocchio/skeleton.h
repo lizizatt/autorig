@@ -45,7 +45,7 @@ public:
     
     void scale(double factor);
     
-protected:
+public:
     void initCompressed();
     
     //help for creation
@@ -55,7 +55,7 @@ protected:
     void setFoot(const string &name);
     void setFat(const string &name);
     
-private:
+public:
      //full
     PtGraph fGraphV;
     vector<int> fPrevV; //previous vertices

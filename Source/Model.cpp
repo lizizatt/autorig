@@ -29,6 +29,7 @@ Model::Model(File m)
     
     obj = directory.getChildFile(m.getFileName());
     obj_poisson = directory.getChildFile(m.getFileNameWithoutExtension() + "_poisson" + m.getFileExtension());
+    obj_cleaned = directory.getChildFile(m.getFileNameWithoutExtension() + "_cleaned" + m.getFileExtension());
     mtl = directory.getChildFile(name + ".mtl");
     jpg = directory.getChildFile(name + ".jpg");
     
@@ -58,7 +59,7 @@ bool Model::load()
 {
     mesh_poisson = new Mesh(obj_poisson.getFullPathName().toRawUTF8());
     mesh = new WavefrontObjFileWithVertexColors();
-    mesh->load(obj);
+    mesh->load(obj_cleaned);
     skeleton = new HumanSkeleton();
     return mesh->shapes.size() > 0 && mesh_poisson->vertices.size() > 0;
 }
@@ -72,7 +73,15 @@ bool Model::runMeshlab()
     int ret1 = system(meshlabCommand.toRawUTF8());
     cout << "Ran meshlab poisson generation with return value " << ret1 << "\n";
     
-    return ret1 == 0;
+    filterScript = File::getSpecialLocation(File::currentApplicationFile).getChildFile("contents").getChildFile("Resources").getChildFile("clean.mlx");
+    meshlabCommand = MESHLABSERVER_PATH + " -i " + obj.getFullPathName() + " -o " + obj_cleaned.getFullPathName() + " -s " + filterScript.getFullPathName() + " -om vt vn";
+    
+    // -om options       data to save in the output files: vc -> vertex colors, vf -> vertex flags, vq -> vertex quality, vn-> vertex normals, vt -> vertex texture coords,  fc -> face colors, ff -> face flags, fq -> face quality, fn-> face normals,  wc -> wedge colors, wn-> wedge normals, wt -> wedge texture coords
+    
+    int ret2 = system(meshlabCommand.toRawUTF8());
+    cout << "Ran meshlab cleanup with return value " << ret2 << "\n";
+    
+    return ret1 == 0 && ret2 == 0;
 }
 
 bool Model::rig()
@@ -156,6 +165,11 @@ bool Model::genFBX()
         lMesh->AddPolygon(indicies[i+2]);
         lMesh->EndPolygon();
     }
+
+    if (pOut.attachment != nullptr) {
+        FbxNode* lSkeletonRoot = CreateSkeleton(lScene, "Skeleton", lMesh);
+        lNode->AddChild(lSkeletonRoot);
+    }
     
     //****************
     //export
@@ -237,3 +251,119 @@ void Model::CreateTexture(FbxScene* pScene, FbxMesh* pMesh)
     if (lMaterial)
         lMaterial->Diffuse.ConnectSrcObject(lTexture);
 }
+
+//hardcoded to HUMANSKELETON in pinocchio
+FbxNode* Model::CreateSkeleton(FbxScene* pScene, const char* pName, FbxMesh* lMesh)
+{
+    if (skeleton->fGraphV.verts.size() == 0) {
+        return nullptr;
+    }
+    
+    FbxSkin* lSkin = FbxSkin::Create(pScene, "");
+    lMesh->AddDeformer(lSkin);
+    return AddSkeletonHelper(0, pScene, pName, lSkin);
+}
+
+FbxNode* Model::AddSkeletonHelper(int index, FbxScene* pScene, const char* pName, FbxSkin* lSkin)
+{
+    cout << "Add skeleton helper with index " << index << "\n";
+    
+    Vector3 v = skeleton->fGraphV.verts[index];
+    vector<int> edges = skeleton->fGraphV.edges[index];
+    
+    Attachment* a = pOut.attachment;
+    vector<Vector3> embedding = pOut.embedding;
+    
+    String name = "";
+    for (auto &i : skeleton->jointNames) {
+        if (i.second == index) {
+            name = i.first;
+            break;
+        }
+    }
+    FbxString joint(name.toRawUTF8());
+    
+    FbxSkeleton* lJointAttribute = FbxSkeleton::Create(pScene, joint);
+    lJointAttribute->SetSkeletonType(index == 0? FbxSkeleton::eRoot : edges.size() > 0? FbxSkeleton::eLimb : FbxSkeleton::eEffector);
+    
+    FbxNode* node = FbxNode::Create(pScene,joint.Buffer());
+    node->SetNodeAttribute(lJointAttribute);
+    node->LclTranslation.Set(FbxVectorTemplate3<double>(v[0] / mesh_poisson->scale - mesh_poisson->toAdd[0], v[1] / mesh_poisson->scale - mesh_poisson->toAdd[1], v[2] / mesh_poisson->scale - mesh_poisson->toAdd[2]));
+    
+    for (int j = 0; j < edges.size(); j++) {
+        if (edges[j] > index) {
+            node->AddChild(AddSkeletonHelper(edges[j], pScene, joint, lSkin));
+        }
+    }
+    
+    vector<MeshVertex>& pVerts = mesh_poisson->vertices;
+    vector<MeshEdge>& pEdges = mesh_poisson->edges;
+    
+    
+    FbxCluster *cluster = FbxCluster::Create(pScene,"");
+    cluster->SetLink(node);
+    cluster->SetLinkMode(FbxCluster::eNormalize);
+    for (int i = 0; i < mesh->shapes[0]->mesh.vertices.size(); i++) {
+        WavefrontObjFileWithVertexColors::Vertex vert = mesh->shapes[0]->mesh.vertices[i];
+        
+        //sample poisson mesh vertices for distance
+        int closest = 0;
+        double closestSquaredDist = 10000000.0f;
+        int j = 1;
+        for (; j < mesh_poisson->vertices.size(); j+= mesh_poisson->vertices.size()) {
+            double dist = squaredDist(vert, mesh_poisson->vertices[j].pos);
+            if (dist < closestSquaredDist) {
+                closestSquaredDist = dist;
+                closest = j;
+            }
+        }
+        /*
+        
+        //walk edges from the closest vertex in the sampling until distance from self is minimized
+        int minInd = -1;
+        Array<int> seen;
+        vector<int> toExplore;
+        toExplore.push_back(closest);
+        
+        while(toExplore.size() > 0) {
+            closest = toExplore[0];
+            toExplore.pop_back();
+            seen.add(closest);
+            
+            vector<int> toCheck;
+            
+            int prevEdge = pEdges[pVerts[closest].edge].prev;
+            int curVert = pEdges[prevEdge].vertex;
+            int nextCCVert = pEdges[pEdges[pEdges[pEdges[pVerts[closest].edge].twin].prev].prev].vertex;
+            
+            
+            int ogVert = curVert;
+            while (nextCCVert != ogPrevVert) {
+                toCheck.push_back(nextCCVert);
+                prevVert = pEdges[prevEdge].vertex;
+                nextCCVert = pEdges[pEdges[pEdges[pEdges[pVerts[closest].edge].twin].prev].prev].vertex;
+            }
+            
+            for (int i = 0; i < toCheck.size(); i++) {
+                if (!seen.contains(toCheck[i]) && squaredDist(vert, pVerts[toCheck[i]].pos) < closestSquaredDist) {
+                    toExplore.push_back(toCheck[i]);
+                }
+                
+            }
+        }
+         */
+        
+        float vWeightForThisCluster = a->getWeights(closest)[index];
+        cluster->AddControlPointIndex(i, vWeightForThisCluster);
+    }
+    lSkin->AddCluster(cluster);
+    
+    return node;
+}
+
+double Model::squaredDist(WavefrontObjFileWithVertexColors::Vertex a, Vector3 b)
+{
+    return pow(a.x - b[0], 2) + pow(a.y - b[1], 2) + pow(a.z - b[2], 2);
+}
+    
+

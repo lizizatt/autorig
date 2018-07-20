@@ -136,20 +136,20 @@ void Skeleton::setFat(const string &name)
 HumanSkeleton::HumanSkeleton()
 {
     //order of makeJoint calls is very important
-    makeJoint("shoulders",  Vector3(0., 0.5, 0.));                          //0
-    makeJoint("back",       Vector3(0., 0.15, 0.),      "shoulders");       //1
-    makeJoint("hips",       Vector3(0., 0., 0.),        "back");            //2
+    makeJoint("hips",       Vector3(0., 0., 0.));            //2              //0
+    makeJoint("Spine",       Vector3(0., 0.15, 0.),      "Hips");       //1
+    makeJoint("shoulders",  Vector3(0., 0.5, 0.), "Spine");
     makeJoint("head",       Vector3(0., 0.7, 0.),       "shoulders");       //3
     
     makeJoint("lthigh",     Vector3(-0.1, 0., 0.),      "hips");            //4
     makeJoint("lknee",      Vector3(-0.15, -0.35, 0.),  "lthigh");          //5
     makeJoint("lankle",      Vector3(-0.15, -0.8, 0.),  "lknee");           //6
-    makeJoint("lfoot",      Vector3(-0.15, -0.8, 0.1),  "lankle");          //7
+    makeJoint("leftfoot",      Vector3(-0.15, -0.8, 0.1),  "lankle");          //7
     
     makeJoint("rthigh",     Vector3(0.1, 0., 0.),       "hips");            //8
     makeJoint("rknee",      Vector3(0.15, -0.35, 0.),   "rthigh");          //9
     makeJoint("rankle",      Vector3(0.15, -0.8, 0.),   "rknee");           //10
-    makeJoint("rfoot",      Vector3(0.15, -0.8, 0.1),   "rankle");          //11
+    makeJoint("rightfoot",      Vector3(0.15, -0.8, 0.1),   "rankle");          //11
     
     makeJoint("lshoulder",  Vector3(-0.2, 0.5, 0.),     "shoulders");       //12
     makeJoint("lelbow",     Vector3(-0.4, 0.25, 0.075), "lshoulder");       //13
@@ -163,7 +163,7 @@ HumanSkeleton::HumanSkeleton()
     makeSymmetric("lthigh", "rthigh");
     makeSymmetric("lknee", "rknee");
     makeSymmetric("lankle", "rankle");
-    makeSymmetric("lfoot", "rfoot");
+    makeSymmetric("leftfoot", "rightfoot");
     
     makeSymmetric("lshoulder", "rshoulder");
     makeSymmetric("lelbow", "relbow");
@@ -171,8 +171,8 @@ HumanSkeleton::HumanSkeleton()
 
     initCompressed();
 
-    setFoot("lfoot");
-    setFoot("rfoot");
+    setFoot("leftfoot");
+    setFoot("rightfoot");
 
     setFat("hips");
     setFat("shoulders");
@@ -183,8 +183,8 @@ QuadSkeleton::QuadSkeleton()
 {
     //order of makeJoint calls is very important
     makeJoint("shoulders",  Vector3(0., 0., 0.5));
-    makeJoint("back",       Vector3(0., 0., 0.),         "shoulders");
-    makeJoint("hips",       Vector3(0., 0., -0.5),       "back");
+    makeJoint("Spine",       Vector3(0., 0., 0.),         "shoulders");
+    makeJoint("hips",       Vector3(0., 0., -0.5),       "Spine");
     makeJoint("neck",       Vector3(0., 0.2, 0.63),      "shoulders");
     makeJoint("head",       Vector3(0., 0.2, 0.9),       "neck");
     
@@ -231,8 +231,8 @@ HorseSkeleton::HorseSkeleton()
 {
     //order of makeJoint calls is very important
     makeJoint("shoulders",  Vector3(0., 0., 0.5));
-    makeJoint("back",       Vector3(0., 0., 0.),         "shoulders");
-    makeJoint("hips",       Vector3(0., 0., -0.5),       "back");
+    makeJoint("Spine",       Vector3(0., 0., 0.),         "shoulders");
+    makeJoint("hips",       Vector3(0., 0., -0.5),       "Spine");
     makeJoint("neck",       Vector3(0., 0.2, 0.63),      "shoulders");
     makeJoint("head",       Vector3(0., 0.2, 0.9),       "neck");
     
@@ -282,8 +282,8 @@ CentaurSkeleton::CentaurSkeleton()
 {
     //order of makeJoint calls is very important
     makeJoint("shoulders",  Vector3(0., 0., 0.5));                      //0
-    makeJoint("back",       Vector3(0., 0., 0.),         "shoulders");  //1
-    makeJoint("hips",       Vector3(0., 0., -0.5),       "back");       //2
+    makeJoint("Spine",       Vector3(0., 0., 0.),         "shoulders");  //1
+    makeJoint("hips",       Vector3(0., 0., -0.5),       "Spine");       //2
 
     makeJoint("hback",      Vector3(0., 0.25, 0.5),      "shoulders");  //3
     makeJoint("hshoulders", Vector3(0., 0.5, 0.5),       "hback");      //4

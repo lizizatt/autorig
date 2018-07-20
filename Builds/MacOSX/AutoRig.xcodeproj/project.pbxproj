@@ -42,6 +42,7 @@
 		A61EF4A1B25CF6EF5547ECF9 /* indexer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DDA2F1C4A77B702404AA26BB /* indexer.cpp */; };
 		AB920DC989DEA9B49C471451 /* juce_gui_basics.mm in Sources */ = {isa = PBXBuildFile; fileRef = CCEF095C08CBC789DBAE1229 /* juce_gui_basics.mm */; };
 		B059CAEF03211B016A550577 /* AutoRig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 94E70F1EFF92C355E90424AF /* AutoRig.cpp */; };
+		B7D72D1EB9F9FEF4A95B3547 /* clean.mlx in Resources */ = {isa = PBXBuildFile; fileRef = 4DA75B790F229E4CECFEAD0B /* clean.mlx */; };
 		BFAAF483FB94598497FE6B4D /* discretization.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 858B2FAE61D1F28DC7BD8C68 /* discretization.cpp */; };
 		C02925E0F11E76792B800974 /* intersector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 86172CBF141F2D06385CCED6 /* intersector.cpp */; };
 		C2E96E2C026E90DA7C9F1E1A /* juce_core.mm in Sources */ = {isa = PBXBuildFile; fileRef = E0919F5D16235CF7A11C4F10 /* juce_core.mm */; };
@@ -1465,6 +1466,7 @@
 			children = (
 				1D4F875B6A97284EFE157B80 /* Info.plist */,
 				EE5FD4D2CAB4128E9169482B /* RecentFilesMenuTemplate.nib */,
+				4DA75B790F229E4CECFEAD0B /* clean.mlx */,
 				DA4742FB6CC0A4DC888976C3 /* poissonreconstruct.mlx */,
 			);
 			name = Resources;
@@ -1920,7 +1922,6 @@
 			isa = PBXGroup;
 			children = (
 				CFE26567ED70F82B9312E89E /* Hackathon_18_FINAL.jpg */,
-				4DA75B790F229E4CECFEAD0B /* clean.mlx */,
 				313833E89C135A286427C37F /* fragmentshader */,
 				87C42EEBAA6A29026438F1C9 /* vertexshader */,
 			);
@@ -3447,6 +3448,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				029EE34A4569080AC3635E40 /* RecentFilesMenuTemplate.nib in Resources */,
+				B7D72D1EB9F9FEF4A95B3547 /* clean.mlx in Resources */,
 				89A874B3305ED358E6671654 /* poissonreconstruct.mlx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
