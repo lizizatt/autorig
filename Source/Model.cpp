@@ -13,6 +13,8 @@
 
 const String Model::modelDirectory = "~/AutoRig/Models/";
 
+using namespace PinQuaternion;
+
 Model::Model(File m)
 {
     if (!m.existsAsFile() || m.getFileExtension() != ".obj") {
@@ -59,6 +61,19 @@ bool Model::load()
 {
     mesh_poisson = new Mesh(obj_poisson.getFullPathName().toRawUTF8());
     mesh_cleaned = new Mesh(obj_cleaned.getFullPathName().toRawUTF8());
+    
+    PinQuaternion::Quaternion<> meshTransform;
+    meshTransform = PinQuaternion::Quaternion<>(Vector3(0, 1, 0), 180 * M_PI / 180.) * meshTransform;
+    
+    for (int i = 0; i < mesh_poisson->vertices.size(); i++) {
+        mesh_poisson->vertices[i].pos = meshTransform * mesh_poisson->vertices[i].pos;
+    }
+    for (int i = 0; i < mesh_cleaned->vertices.size(); i++) {
+        
+    }
+    
+    mesh_poisson->normalizeBoundingBox();
+    mesh_cleaned->normalizeBoundingBox();
     mesh = new WavefrontObjFileWithVertexColors();
     mesh->load(obj_cleaned);
     skeleton = new HumanSkeleton();
