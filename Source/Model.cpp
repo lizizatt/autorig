@@ -58,6 +58,7 @@ Model::Model(File m)
 bool Model::load()
 {
     mesh_poisson = new Mesh(obj_poisson.getFullPathName().toRawUTF8());
+    mesh_cleaned = new Mesh(obj_cleaned.getFullPathName().toRawUTF8());
     mesh = new WavefrontObjFileWithVertexColors();
     mesh->load(obj_cleaned);
     skeleton = new HumanSkeleton();
@@ -74,7 +75,7 @@ bool Model::runMeshlab()
     cout << "Ran meshlab poisson generation with return value " << ret1 << "\n";
     
     filterScript = File::getSpecialLocation(File::currentApplicationFile).getChildFile("contents").getChildFile("Resources").getChildFile("clean.mlx");
-    meshlabCommand = MESHLABSERVER_PATH + " -i " + obj.getFullPathName() + " -o " + obj_cleaned.getFullPathName() + " -s " + filterScript.getFullPathName() + " -om vt vn";
+    meshlabCommand = MESHLABSERVER_PATH + " -i " + obj.getFullPathName() + " -o " + obj_cleaned.getFullPathName() + " -s " + filterScript.getFullPathName() + " -im vt vn -om vt vn";
     
     // -om options       data to save in the output files: vc -> vertex colors, vf -> vertex flags, vq -> vertex quality, vn-> vertex normals, vt -> vertex texture coords,  fc -> face colors, ff -> face flags, fq -> face quality, fn-> face normals,  wc -> wedge colors, wn-> wedge normals, wt -> wedge texture coords
     
@@ -295,8 +296,8 @@ FbxNode* Model::AddSkeletonHelper(int index, FbxScene* pScene, const char* pName
         }
     }
     
-    vector<MeshVertex>& pVerts = mesh_poisson->vertices;
-    vector<MeshEdge>& pEdges = mesh_poisson->edges;
+    vector<MeshVertex>& pVerts = mesh_cleaned->vertices;
+    vector<MeshEdge>& pEdges = mesh_cleaned->edges;
     
     
     FbxCluster *cluster = FbxCluster::Create(pScene,"");
@@ -309,8 +310,8 @@ FbxNode* Model::AddSkeletonHelper(int index, FbxScene* pScene, const char* pName
         int closest = 0;
         double closestSquaredDist = 10000000.0f;
         int j = 1;
-        for (; j < mesh_poisson->vertices.size(); j+= mesh_poisson->vertices.size()) {
-            double dist = squaredDist(vert, mesh_poisson->vertices[j].pos);
+        for (; j < mesh_cleaned->vertices.size(); j+= mesh_cleaned->vertices.size()) {
+            double dist = squaredDist(vert, mesh_cleaned->vertices[j].pos);
             if (dist < closestSquaredDist) {
                 closestSquaredDist = dist;
                 closest = j;

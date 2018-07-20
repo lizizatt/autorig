@@ -11,6 +11,7 @@
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "UIComponent.h"
 #include "Main.h"
+#include "motion.h"
 
 //==============================================================================
 UIComponent::UIComponent()
@@ -139,6 +140,10 @@ void UIComponent::RigDone()
     outputLabel.setText("Rig done.", dontSendNotification);
     outputLabel.setColour(Label::ColourIds::textColourId, Colours::green);
     
+    File motionFile = File::getSpecialLocation(File::currentApplicationFile).getChildFile("contents").getChildFile("Resources").getChildFile("walk.txt");
+    
+    
+    glComp->addMesh(new DefMesh(*autoRig->activeModel->mesh_poisson, *autoRig->activeModel->skeleton, autoRig->activeModel->pOut.embedding, *autoRig->activeModel->pOut.attachment, new Motion(motionFile.getFullPathName().toRawUTF8())));
 }
 
 void UIComponent::NewActiveModel()

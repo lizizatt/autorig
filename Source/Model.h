@@ -31,7 +31,8 @@ public:
     File mtl;
     File jpg;
     ScopedPointer<WavefrontObjFileWithVertexColors> mesh;
-    ScopedPointer<Mesh> mesh_poisson;
+    ScopedPointer<Mesh> mesh_poisson;    ScopedPointer<Mesh> mesh_cleaned;
+    
     ScopedPointer<Skeleton> skeleton;
     String name;
     bool rigged = false;

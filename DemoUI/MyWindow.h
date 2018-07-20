@@ -64,7 +64,9 @@ public:
     void clearLines() { lines.clear(); }
 
 private:
-    bool flatShading, floor, skeleton;
+    bool flatShading = false;
+    bool floor = true;
+    bool skeleton = true;
     Transform<> transform;
     vector<DisplayMesh *> meshes;
     vector<LineSegment> lines;

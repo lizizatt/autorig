@@ -396,18 +396,18 @@
     <GROUP id="{A033381A-9864-7A2A-0B20-AA5FD37A673A}" name="Resources">
       <FILE id="e8J7bH" name="Hackathon_18_FINAL.jpg" compile="0" resource="1"
             file="Resources/Hackathon_18_FINAL.jpg"/>
-      <FILE id="iU0xYu" name="crossWalk.txt" compile="0" resource="1" file="Resources/crossWalk.txt"/>
+      <FILE id="iU0xYu" name="crossWalk.txt" compile="0" resource="0" file="Resources/crossWalk.txt"/>
       <FILE id="maIiRP" name="clean.mlx" compile="0" resource="0" file="Resources/clean.mlx"/>
       <FILE id="mizePL" name="fragmentshader" compile="0" resource="1" file="Resources/fragmentshader"/>
-      <FILE id="EXMTby" name="jumpAround.txt" compile="0" resource="1" file="Resources/jumpAround.txt"/>
+      <FILE id="EXMTby" name="jumpAround.txt" compile="0" resource="0" file="Resources/jumpAround.txt"/>
       <FILE id="frXrE4" name="vertexshader" compile="0" resource="1" file="Resources/vertexshader"/>
-      <FILE id="gQrEwG" name="runAround.txt" compile="0" resource="1" file="Resources/runAround.txt"/>
+      <FILE id="gQrEwG" name="runAround.txt" compile="0" resource="0" file="Resources/runAround.txt"/>
       <FILE id="isRO9v" name="poissonreconstruct.mlx" compile="0" resource="0"
             file="Resources/poissonreconstruct.mlx"/>
-      <FILE id="ntGaTH" name="wakeUpSequence2.txt" compile="0" resource="1"
+      <FILE id="ntGaTH" name="wakeUpSequence2.txt" compile="0" resource="0"
             file="Resources/wakeUpSequence2.txt"/>
-      <FILE id="gPM9mn" name="walk.txt" compile="0" resource="1" file="Resources/walk.txt"/>
-      <FILE id="fgaw3k" name="walkAndSkip.txt" compile="0" resource="1" file="Resources/walkAndSkip.txt"/>
+      <FILE id="gPM9mn" name="walk.txt" compile="0" resource="0" file="Resources/walk.txt"/>
+      <FILE id="fgaw3k" name="walkAndSkip.txt" compile="0" resource="0" file="Resources/walkAndSkip.txt"/>
     </GROUP>
     <GROUP id="{A7BF955B-4863-9FF7-C55A-0DC7A2B9B960}" name="Pinocchio">
       <FILE id="HVNwot" name="attachment.cpp" compile="1" resource="0" file="Pinocchio/attachment.cpp"/>
