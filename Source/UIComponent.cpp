@@ -25,7 +25,7 @@ UIComponent::UIComponent()
     addAndMakeVisible(models);
     addAndMakeVisible(rig);
     addAndMakeVisible(openFolder);
-    //addAndMakeVisible(genFbx);
+    addAndMakeVisible(genFbx);
     addAndMakeVisible(animations);
     
     animationFiles.add(File::getSpecialLocation(File::currentApplicationFile).getChildFile("contents").getChildFile("Resources").getChildFile("crosswalk.txt"));
@@ -92,7 +92,8 @@ void UIComponent::resized()
     
     rig.setBounds(20, 200, getWidth() - 40, 30);
     openFolder.setBounds(loadExisting.getX(), rig.getBottom() + 5, getWidth() / 2 - 40, 20);
-    animations.setBounds(loadOBJ.getX(), rig.getBottom() + 5, getWidth() / 2 - 40, 20);
+    genFbx.setBounds(loadOBJ.getX(), rig.getBottom() + 5, getWidth() / 2 - 40, 20);
+    animations.setBounds(loadOBJ.getX(), 100, getWidth() / 2 - 40, 20);
 }
 
 void UIComponent::comboBoxChanged(ComboBox *cb)
@@ -165,7 +166,7 @@ void UIComponent::RigDone()
     if (autoRig->activeModel != nullptr && autoRig->activeModel->pOut.attachment != nullptr) {
         File motionFile = animationFiles[activeAnimation];
         
-        glComp->addMesh(new DefMesh(*autoRig->activeModel->mesh_poisson, *autoRig->activeModel->skeleton, autoRig->activeModel->pOut.embedding, *autoRig->activeModel->pOut.attachment, new Motion(motionFile.getFullPathName().toRawUTF8())));
+        glComp->addMesh(new DefMesh(*autoRig->activeModel->meshToRig, *autoRig->activeModel->skeleton, autoRig->activeModel->pOut.embedding, *autoRig->activeModel->pOut.attachment, new Motion(motionFile.getFullPathName().toRawUTF8())));
     }
     
     

@@ -30,6 +30,7 @@ public:
     File obj_cleaned;
     File mtl;
     File jpg;
+    Mesh* meshToRig;
     ScopedPointer<WavefrontObjFileWithVertexColors> mesh;
     ScopedPointer<Mesh> mesh_poisson;    ScopedPointer<Mesh> mesh_cleaned;
     
@@ -48,7 +49,7 @@ public:
     void CreateTexture(FbxScene* pScene, FbxMesh* pMesh);
     FbxNode* CreateSkeleton(FbxScene* pScene, const char* pName, FbxMesh* lMesh);
     FbxNode* AddSkeletonHelper(int index, FbxScene* pScene, const char* pName, FbxSkin* lSkin);
-    double squaredDist(WavefrontObjFileWithVertexColors::Vertex a, Vector3 b);
+    double squaredDist(Vector3 a, Vector3 b);
 };
 
 

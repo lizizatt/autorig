@@ -63,20 +63,68 @@ bool Model::load()
     mesh_cleaned = new Mesh(obj_cleaned.getFullPathName().toRawUTF8());
     
     PinQuaternion::Quaternion<> meshTransform;
-    meshTransform = PinQuaternion::Quaternion<>(Vector3(0, 1, 0), 180 * M_PI / 180.) * meshTransform;
+    
+    if (name != "liz_highres_copy") {
+        meshTransform = PinQuaternion::Quaternion<>(Vector3(0, 1, 0), 180 * M_PI / 180.) * meshTransform;
+    }
+    else {
+        meshTransform = PinQuaternion::Quaternion<>(Vector3(1, 0, 0), 180 * M_PI / 180.) * meshTransform;
+    }
     
     for (int i = 0; i < mesh_poisson->vertices.size(); i++) {
         mesh_poisson->vertices[i].pos = meshTransform * mesh_poisson->vertices[i].pos;
     }
     for (int i = 0; i < mesh_cleaned->vertices.size(); i++) {
-        
+        mesh_cleaned->vertices[i].pos = meshTransform * mesh_cleaned->vertices[i].pos;
     }
     
     mesh_poisson->normalizeBoundingBox();
     mesh_cleaned->normalizeBoundingBox();
+    meshToRig = mesh_poisson;
     mesh = new WavefrontObjFileWithVertexColors();
     mesh->load(obj_cleaned);
     skeleton = new HumanSkeleton();
+    
+    
+    //quick-and-dirty generate a vertex color for each vertex of mesh_poisson, by finding closest vertex on obj_cleaned and parsing in to the texture
+    
+    
+    /*
+    Image img = ImageCache::getFromFile(jpg);
+    
+    for (int i = 0; i < mesh_poisson->vertices.size(); i++) {
+        
+        //sample poisson mesh vertices for distance
+        int closest = 0;
+        double closestSquaredDist = 10000000.0f;
+        for (int j = 0; j < mesh_cleaned->vertices.size(); j++) {
+            
+            double dist = squaredDist(mesh_poisson->vertices[i].pos, mesh_cleaned->vertices[j].pos);
+            if (dist < closestSquaredDist) {
+                closestSquaredDist = dist;
+                closest = j;
+            }
+        }
+        
+        int xPix = img.getWidth() * mesh_cleaned->vertices[closest].textureCoord[0];
+        int yPix = img.getHeight() * mesh_cleaned->vertices[closest].textureCoord[1];
+        double n = 5;
+        double n2 = pow(n, 2);
+        Vector3 c;
+        for (int x = -n; x < n; x++) {
+            for (int y = -n; y < n; y++) {
+                int xPixO = xPix+x;
+                int yPixO = yPix+y;
+                if (xPixO > 0 && yPixO > 0 && xPixO < img.getWidth() && yPixO < img.getHeight()) {
+                    Colour col = img.getPixelAt(xPixO, yPixO);
+                    c += Vector3(col.getFloatRed() / n2, col.getFloatGreen() / n2, col.getFloatBlue() / n2);
+                }
+            }
+        }
+        mesh_poisson->vertices[i].color = c;
+     }
+     */
+    
     return mesh->shapes.size() > 0 && mesh_poisson->vertices.size() > 0;
 }
 
@@ -106,11 +154,17 @@ bool Model::rig()
         return true;
     }
     
+    cout << "Starting rig on " << (meshToRig == mesh_cleaned? "mesh_cleaned" : "mesh_poisson") << "\n";
+    
     //poisson mesh pinocchio output
-    pOut = autorig(*skeleton, *mesh_poisson);
+    pOut = autorig(*skeleton, *meshToRig);
     //****************
-  
-    return pOut.attachment != nullptr;
+    
+    if (pOut.attachment == nullptr) {
+        return false;
+    }
+    
+    return true;
 }
 
 bool Model::genFBX()
@@ -311,8 +365,8 @@ FbxNode* Model::AddSkeletonHelper(int index, FbxScene* pScene, const char* pName
         }
     }
     
-    vector<MeshVertex>& pVerts = mesh_cleaned->vertices;
-    vector<MeshEdge>& pEdges = mesh_cleaned->edges;
+    vector<MeshVertex>& pVerts = meshToRig->vertices;
+    vector<MeshEdge>& pEdges = meshToRig->edges;
     
     
     FbxCluster *cluster = FbxCluster::Create(pScene,"");
@@ -325,8 +379,8 @@ FbxNode* Model::AddSkeletonHelper(int index, FbxScene* pScene, const char* pName
         int closest = 0;
         double closestSquaredDist = 10000000.0f;
         int j = 1;
-        for (; j < mesh_cleaned->vertices.size(); j+= mesh_cleaned->vertices.size()) {
-            double dist = squaredDist(vert, mesh_cleaned->vertices[j].pos);
+        for (; j < mesh_poisson->vertices.size(); j+= meshToRig->vertices.size()) {
+            double dist = 0;//squaredDist(vert, meshToRig->vertices[j].pos);
             if (dist < closestSquaredDist) {
                 closestSquaredDist = dist;
                 closest = j;
@@ -341,9 +395,9 @@ FbxNode* Model::AddSkeletonHelper(int index, FbxScene* pScene, const char* pName
     return node;
 }
 
-double Model::squaredDist(WavefrontObjFileWithVertexColors::Vertex a, Vector3 b)
+double Model::squaredDist(Vector3 a, Vector3 b)
 {
-    return pow(a.x - b[0], 2) + pow(a.y - b[1], 2) + pow(a.z - b[2], 2);
+    return pow(a[0] - b[0], 2) + pow(a[1] - b[1], 2) + pow(a[2] - b[2], 2);
 }
     
 

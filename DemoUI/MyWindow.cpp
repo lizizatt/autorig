@@ -23,6 +23,7 @@ THE SOFTWARE.
 #include "MyWindow.h"
 #include "../Pinocchio/skeleton.h"
 #include <OpenGL/GL.h>
+#include "Main.h"
 
 static HumanSkeleton human;
 
@@ -36,10 +37,13 @@ Window::Window(MyWindow* window)
     setEnabled(true);
     setUsingNativeTitleBar(true);
     toFront(false);
+    setDraggable(true);
 }
 
 MyWindow::MyWindow() : flatShading(true), floor(true), skeleton(false)
 {
+    autoRig = AutoRigApplication::getAutoRig();
+    
     setSize(w, h);
     resetTransform();
 
@@ -56,7 +60,7 @@ void MyWindow::render() {
     
     int i;
     if (ready) {
-        glViewport(0, 0, w*2, h*2);
+        glViewport(0, 0, w, h);
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
 
@@ -139,7 +143,7 @@ void MyWindow::render() {
 
     //draw meshes
     for(i = 0; i < (int)meshes.size(); ++i) {
-        drawMesh(*(ms[i]), flatShading);
+        drawMesh(*(ms[i]), flatShading, Vector3(), true);
     }
 
     //draw lines
@@ -193,7 +197,7 @@ void MyWindow::initialise()
     glEnable( GL_NORMALIZE);
     glDisable(GL_ALPHA_TEST);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glShadeModel(GL_FLAT);
+    glShadeModel(GL_SMOOTH);
     glClearColor(0.f, 0.f, 0.f, 0.f);
     
     ready = true;
@@ -204,11 +208,15 @@ void MyWindow::shutdown()
     
 }
 
-void MyWindow::drawMesh(const Mesh &m, bool flatShading, Vector3 trans)
+void MyWindow::drawMesh(const Mesh &m, bool flatShading, Vector3 trans, bool shadow)
 {
     int i;
     Vector3 normal;
-
+    
+    bool color = false;
+    if (color && shadow) {
+        glDisable(GL_LIGHTING);
+    }
     glBegin(GL_TRIANGLES);
     for(i = 0; i < (int)m.edges.size(); ++i) {
         int v = m.edges[i].vertex;
@@ -225,10 +233,18 @@ void MyWindow::drawMesh(const Mesh &m, bool flatShading, Vector3 trans)
             normal = ((p2 - p) % (p3 - p)).normalize();
             glNormal3d(normal[0], normal[1], normal[2]);
         }
-    
+        
+        //determine color
+        if (color && shadow && m.vertices[v].color.size() > 0) {
+            glColor4f(m.vertices[v].color[0], m.vertices[v].color[1], m.vertices[v].color[2], 1.0f);
+        }
+        
         glVertex3d(p[0] + trans[0], p[1] + trans[1], p[2] + trans[2]);
     }
     glEnd();
+    if (color && shadow) {
+        glEnable(GL_LIGHTING);
+    }
 }
 
 void MyWindow::drawFloor()

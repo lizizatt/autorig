@@ -30,6 +30,8 @@ struct MeshVertex
     
     Vector3 pos;
     Vector3 normal;
+    Vector3 color;
+    Vector2 textureCoord;
     int edge; //an edge such that edge->prev->vertex is this
 };
 

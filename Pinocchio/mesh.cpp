@@ -228,6 +228,11 @@ void Mesh::readObj(istream &strm)
 {
     int i;
     int lineNum = 0;
+    double vtX = 0;
+    double vtY = 0;
+    double vnX;
+    double vnY;
+    double vnZ;
     while(!strm.eof()) {
         ++lineNum;
         
@@ -238,23 +243,47 @@ void Mesh::readObj(istream &strm)
         if(words[0][0] == '#') //comment
             continue;
         
-        if(words[0].size() != 1) //unknown line
+        if(words[0].size() < 1) //unknown line
             continue;
         
         //deal with the line based on the first word
         if(words[0][0] == 'v') {
-            if(words.size() != 4) {
+            
+            if(words.size() != 7 && words.size() != 4 && words.size() != 3) {
                 cout << "Error on line " << lineNum << endl;
                 OUT;
             }
-            
-            double x, y, z;
-            sscanf(words[1].c_str(), "%lf", &x);
-            sscanf(words[2].c_str(), "%lf", &y);
-            sscanf(words[3].c_str(), "%lf", &z);
-            
-            vertices.resize(vertices.size() + 1);
-            vertices.back().pos = Vector3(x, y, z);
+            else if (words[0] == "vt") {
+                sscanf(words[1].c_str(), "%lf", &vtX);
+                sscanf(words[2].c_str(), "%lf", &vtY);
+            }
+            else if (words[0] == "v") {
+                if(words.size() == 7) {
+                    double x, y, z;
+                    double r, g, b;
+                    sscanf(words[1].c_str(), "%lf", &x);
+                    sscanf(words[2].c_str(), "%lf", &y);
+                    sscanf(words[3].c_str(), "%lf", &z);
+                    sscanf(words[4].c_str(), "%lf", &r);
+                    sscanf(words[5].c_str(), "%lf", &g);
+                    sscanf(words[6].c_str(), "%lf", &b);
+                    
+                    vertices.resize(vertices.size() + 1);
+                    vertices.back().pos = Vector3(x, y, z);
+                    vertices.back().color = Vector3(r, g, b);
+                }
+                else {
+                    
+                    double x, y, z;
+                    sscanf(words[1].c_str(), "%lf", &x);
+                    sscanf(words[2].c_str(), "%lf", &y);
+                    sscanf(words[3].c_str(), "%lf", &z);
+                    
+                    vertices.resize(vertices.size() + 1);
+                    vertices.back().pos = Vector3(x, y, z);
+                }
+            }
+
         }
         
         if(words[0][0] == 'f') {

@@ -28,6 +28,7 @@ THE SOFTWARE.
 #include "../Pinocchio/mesh.h"
 #include "../Pinocchio/transform.h"
 #include "DisplayMesh.h"
+#include "AutoRig.h"
 
 
 using namespace PinQuaternion;
@@ -46,8 +47,8 @@ struct LineSegment
 class MyWindow : public OpenGLAppComponent, public Timer
 {
 public:
-    const int w = 800;
-    const int h = 600;
+    int w = 800;
+    int h = 600;
     
 public:
     MyWindow();
@@ -69,6 +70,7 @@ public:
     void clearMeshes() {meshes.clear();}
     
 private:
+    AutoRig *autoRig;
     bool flatShading = false;
     bool floor = true;
     bool skeleton = true;
@@ -80,7 +82,7 @@ private:
     
     void resetTransform();
     void initGL();
-    void drawMesh(const Mesh &m, bool flatShading, Vector3 trans = Vector3());
+    void drawMesh(const Mesh &m, bool flatShading, Vector3 trans = Vector3(), bool shadow = false);
     void drawFloor();
 };
 
