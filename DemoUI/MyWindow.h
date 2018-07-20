@@ -43,7 +43,7 @@ struct LineSegment
     double thickness;
 };
 
-class MyWindow : public OpenGLAppComponent
+class MyWindow : public OpenGLAppComponent, public Timer
 {
 public:
     MyWindow();
@@ -51,8 +51,13 @@ public:
     virtual ~MyWindow() {}
     virtual void render() override;
     
+    virtual void paint(Graphics g) {}
+    virtual void resized() {}
+    
     virtual void initialise() override;
     virtual void shutdown() override;
+    
+    void timerCallback() override;
 
     void addMesh(DisplayMesh *inM) { meshes.push_back(inM); }
     void addLine(const LineSegment &l) { lines.push_back(l); }
@@ -77,6 +82,9 @@ class Window : public DocumentWindow
 public:
     Window(MyWindow* window);
     MyWindow* window;
+    
+    virtual void paint(Graphics g) {}
+    virtual void resized() {}
 };
 
 #endif //MYWINDOW_H

@@ -33,6 +33,7 @@ public:
     
     virtual void ModelsUpdated() override;
     virtual void RigDone() override;
+    virtual void NewActiveModel() override;
     
     void Post(bool error, String success, String fail);
     

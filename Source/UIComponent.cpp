@@ -139,7 +139,11 @@ void UIComponent::RigDone()
     outputLabel.setText("Rig done.", dontSendNotification);
     outputLabel.setColour(Label::ColourIds::textColourId, Colours::green);
     
-    glComp->addMesh(m = new StaticDisplayMesh(*autoRig->ActiveModel->mesh_poisson().get()));
+}
+
+void UIComponent::NewActiveModel()
+{
+    glComp->addMesh(new StaticDisplayMesh(*autoRig->activeModel->mesh_poisson));
 }
 
 void UIComponent::Post(bool error, String success, String fail) {
