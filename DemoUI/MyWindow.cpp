@@ -31,7 +31,7 @@ MyWindow *win = NULL;
 Window::Window(MyWindow* window)
 : DocumentWindow("RenderWindow", Colours::black, DocumentWindow::allButtons, true), window(window) {
     setContentNonOwned(window, true);
-    setSize(800, 600);
+    setSize(window->w, window->h);
     setVisible(true);
     setEnabled(true);
     setUsingNativeTitleBar(true);
@@ -40,7 +40,7 @@ Window::Window(MyWindow* window)
 
 MyWindow::MyWindow() : flatShading(true), floor(true), skeleton(false)
 {
-    setSize(800, 600);
+    setSize(w, h);
     resetTransform();
 
     openGLContext.setContinuousRepainting(false);
@@ -53,11 +53,10 @@ void MyWindow::timerCallback()
 }
 
 void MyWindow::render() {
+    
     int i;
     if (ready) {
-        glViewport(0, 0, 1600, 1200);
-        int w = 800;
-        int h = 600;
+        glViewport(0, 0, w*2, h*2);
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
 

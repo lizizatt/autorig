@@ -25,7 +25,19 @@ UIComponent::UIComponent()
     addAndMakeVisible(models);
     addAndMakeVisible(rig);
     addAndMakeVisible(openFolder);
-    addAndMakeVisible(genFbx);
+    //addAndMakeVisible(genFbx);
+    addAndMakeVisible(animations);
+    
+    animationFiles.add(File::getSpecialLocation(File::currentApplicationFile).getChildFile("contents").getChildFile("Resources").getChildFile("crosswalk.txt"));
+    animationFiles.add(File::getSpecialLocation(File::currentApplicationFile).getChildFile("contents").getChildFile("Resources").getChildFile("jumparound.txt"));
+    animationFiles.add(File::getSpecialLocation(File::currentApplicationFile).getChildFile("contents").getChildFile("Resources").getChildFile("runAround.txt"));
+    animationFiles.add(File::getSpecialLocation(File::currentApplicationFile).getChildFile("contents").getChildFile("Resources").getChildFile("wakeUpSequence2.txt"));
+    animationFiles.add(File::getSpecialLocation(File::currentApplicationFile).getChildFile("contents").getChildFile("Resources").getChildFile("walk.txt"));
+    animationFiles.add(File::getSpecialLocation(File::currentApplicationFile).getChildFile("contents").getChildFile("Resources").getChildFile("walkAndSkip.txt"));
+    for (int i = 0; i < animationFiles.size(); i++) {
+        animations.addItem(animationFiles[i].getFileNameWithoutExtension(), i+1);
+    }
+    animations.addListener(this);
     
     glComp = new MyWindow();
     glWindow = new Window(glComp);
@@ -80,7 +92,15 @@ void UIComponent::resized()
     
     rig.setBounds(20, 200, getWidth() - 40, 30);
     openFolder.setBounds(loadExisting.getX(), rig.getBottom() + 5, getWidth() / 2 - 40, 20);
-    genFbx.setBounds(loadOBJ.getX(), rig.getBottom() + 5, getWidth() / 2 - 40, 20);
+    animations.setBounds(loadOBJ.getX(), rig.getBottom() + 5, getWidth() / 2 - 40, 20);
+}
+
+void UIComponent::comboBoxChanged(ComboBox *cb)
+{
+    if (cb == &animations) {
+        activeAnimation = cb->getSelectedItemIndex();
+        RigDone();
+    }
 }
 
 void UIComponent::buttonClicked(Button *b)
@@ -140,10 +160,28 @@ void UIComponent::RigDone()
     outputLabel.setText("Rig done.", dontSendNotification);
     outputLabel.setColour(Label::ColourIds::textColourId, Colours::green);
     
+    glComp->clearMeshes();
+    
+    if (autoRig->activeModel != nullptr && autoRig->activeModel->pOut.attachment != nullptr) {
+        File motionFile = animationFiles[activeAnimation];
+        
+        glComp->addMesh(new DefMesh(*autoRig->activeModel->mesh_poisson, *autoRig->activeModel->skeleton, autoRig->activeModel->pOut.embedding, *autoRig->activeModel->pOut.attachment, new Motion(motionFile.getFullPathName().toRawUTF8())));
+    }
+    
+    
+    //startTimer(2000);
+}
+
+void UIComponent::timerCallback()
+{
     File motionFile = File::getSpecialLocation(File::currentApplicationFile).getChildFile("contents").getChildFile("Resources").getChildFile("walk.txt");
-    
-    
+
     glComp->addMesh(new DefMesh(*autoRig->activeModel->mesh_poisson, *autoRig->activeModel->skeleton, autoRig->activeModel->pOut.embedding, *autoRig->activeModel->pOut.attachment, new Motion(motionFile.getFullPathName().toRawUTF8())));
+    
+    count++;
+    if (count > 8) {
+        stopTimer();
+    }
 }
 
 void UIComponent::NewActiveModel()

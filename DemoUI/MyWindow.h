@@ -46,6 +46,10 @@ struct LineSegment
 class MyWindow : public OpenGLAppComponent, public Timer
 {
 public:
+    const int w = 800;
+    const int h = 600;
+    
+public:
     MyWindow();
 
     virtual ~MyWindow() {}
@@ -62,7 +66,8 @@ public:
     void addMesh(DisplayMesh *inM) { meshes.push_back(inM); }
     void addLine(const LineSegment &l) { lines.push_back(l); }
     void clearLines() { lines.clear(); }
-
+    void clearMeshes() {meshes.clear();}
+    
 private:
     bool flatShading = false;
     bool floor = true;

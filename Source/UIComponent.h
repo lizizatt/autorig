@@ -19,11 +19,13 @@
 //==============================================================================
 /*
 */
-class UIComponent    : public Component, public ButtonListener, public AutoRigListener
+class UIComponent    : public Component, public ButtonListener, public AutoRigListener, public Timer, public ComboBoxListener
 {
 public:
     UIComponent();
     ~UIComponent();
+    
+    int count = 0;
 
     void paint (Graphics&);
     void resized();
@@ -31,15 +33,20 @@ public:
     void buttonHelper(Button &b);
     void buttonClicked(Button *b) override;
     
+    void timerCallback() override;
+    
     virtual void ModelsUpdated() override;
     virtual void RigDone() override;
     virtual void NewActiveModel() override;
+    virtual void comboBoxChanged(ComboBox *cb) override;
     
     void Post(bool error, String success, String fail);
     
 private:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (UIComponent)
     
+    int activeAnimation = 0;
+    Array<File> animationFiles;
     ComboBox models;
     TextButton loadExisting;
     TextButton loadOBJ;
@@ -48,6 +55,7 @@ private:
     TextButton genFbx;
     Label outputLabel;
     AutoRig *autoRig;
+    ComboBox animations;
     
     Image background;
     
